@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "strassemods",
+	"version": "${version}",
+	"name": "Strasse Mods",
+	"description": "Strasse Mods — базовый мод-шаблон для Fabric.",
+	"authors": [
+		"DrStrasse"
+	],
+	"contact": {
+		"homepage": "https://github.com/DrStrasse/MinecraftModsStrasse",
+		"sources": "https://github.com/DrStrasse/MinecraftModsStrasse"
+	},
+	"license": "MIT",
+	"icon": "assets/strassemods/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"by.strasse.strassemods.StrasseMods"
+		],
+		"client": [
+			"by.strasse.strassemods.client.StrasseModsClient"
+		]
+	},
+	"mixins": [
+		"strassemods.mixins.json",
+		{
+			"config": "strassemods.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

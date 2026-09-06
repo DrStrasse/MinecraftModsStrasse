@@ -1,0 +1,13 @@
+{
+  "itemGroup.strassemods": "Example Mod Tab",
+  "block.strassemods.example_block": "Example Block",
+  "item.strassemods.example_item": "Example Item",
+
+  "strassemods.configuration.title": "Example Mod Configs",
+  "strassemods.configuration.section.strassemods.common.toml": "Example Mod Configs",
+  "strassemods.configuration.section.strassemods.common.toml.title": "Example Mod Configs",
+  "strassemods.configuration.items": "Item List",
+  "strassemods.configuration.logDirtBlock": "Log Dirt Block",
+  "strassemods.configuration.magicNumberIntroduction": "Magic Number Text",
+  "strassemods.configuration.magicNumber": "Magic Number"
+}

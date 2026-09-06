@@ -1,0 +1,125 @@
+{
+  "_comment": "Матрица версий Minecraft Java Edition для разработки модов. Проверено 2026-09-06. Обновлять через tools/check-versions.sh (нужен доступ в интернет).",
+  "checked_at": "2026-09-06",
+  "sources": {
+    "fabric": "https://fabricmc.net/develop/",
+    "fabric_maven": "https://maven.fabricmc.net/net/fabricmc/",
+    "neoforge_maven": "https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml",
+    "forge_promos": "https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json",
+    "neoforge_primers": "https://github.com/neoforged/.github/tree/main/primers"
+  },
+  "toolchain": {
+    "fabric_loader": "0.19.5",
+    "fabric_loom": "1.17-SNAPSHOT",
+    "loom_plugin_id": {
+      "obfuscated_versions_upto_1_21_11": "net.fabricmc.fabric-loom-remap",
+      "unobfuscated_26_1_plus": "net.fabricmc.fabric-loom"
+    },
+    "moddevgradle": "2.0.146",
+    "moddevgradle_legacyforge": "2.0.91",
+    "gradle_wrapper": {
+      "fabric_templates": "9.5.1",
+      "neoforge_templates": "9.2.1"
+    }
+  },
+  "versions": [
+    {
+      "minecraft": "1.20.1",
+      "java": 17,
+      "status": "legacy-LTS",
+      "fabric_api": "0.92.12+1.20.1",
+      "neoforge": null,
+      "forge": { "latest": "47.4.23", "recommended": "47.4.10" },
+      "mappings": ["yarn", "mojang", "parchment 2023.09.03"],
+      "notes": "Самая популярная 'старая' версия для модпаков (ATM9, Vault Hunters 3). NeoForge не поддерживает."
+    },
+    {
+      "minecraft": "1.20.2",
+      "java": 17,
+      "status": "eol",
+      "neoforge": "20.2.88",
+      "forge": { "latest": "48.1.0" },
+      "notes": "Первая версия, где NeoForge полностью отделился от Forge."
+    },
+    {
+      "minecraft": "1.20.4",
+      "java": 17,
+      "status": "eol",
+      "neoforge": "20.4.237",
+      "forge": { "latest": "49.2.8" }
+    },
+    {
+      "minecraft": "1.20.6",
+      "java": 21,
+      "status": "eol",
+      "neoforge": "20.6.141",
+      "forge": { "latest": "50.2.10" },
+      "notes": "1.20.5/1.20.6 — переход на Java 21 и на Data Components вместо NBT."
+    },
+    {
+      "minecraft": "1.21.1",
+      "java": 21,
+      "status": "LTS",
+      "fabric_api": "0.116.17+1.21.1",
+      "neoforge": "21.1.250",
+      "forge": { "latest": "52.1.16", "recommended": "52.1.0" },
+      "mappings": ["yarn", "mojang", "parchment 2024.11.17"],
+      "notes": "Де-факто основная версия для крупных модпаков 1.21-эры (ATM10). Рекомендуется как основная цель."
+    },
+    {
+      "minecraft": "1.21.4",
+      "java": 21,
+      "status": "supported",
+      "neoforge": "21.4.157",
+      "forge": { "latest": "54.1.18" },
+      "notes": "Client Items: модели предметов переехали в assets/<ns>/items/<path>.json."
+    },
+    {
+      "minecraft": "1.21.5",
+      "java": 21,
+      "status": "supported",
+      "neoforge": "21.5.98",
+      "forge": { "latest": "55.1.13" },
+      "notes": "Rework рендер-пайплайна (RenderPipeline/GpuBuffer)."
+    },
+    {
+      "minecraft": "1.21.8",
+      "java": 21,
+      "status": "popular",
+      "fabric_api": "0.136.1+1.21.8",
+      "neoforge": "21.8.54",
+      "forge": { "latest": "58.1.22", "recommended": "58.1.0" },
+      "mappings": ["yarn", "mojang", "parchment 2025.09.14"],
+      "notes": "Последняя версия ветки 1.21.8; много модов 2026 года всё ещё здесь."
+    },
+    {
+      "minecraft": "1.21.11",
+      "java": 21,
+      "status": "last-obfuscated",
+      "fabric_api": "0.141.6+1.21.11",
+      "neoforge": "21.11.45",
+      "forge": { "latest": "61.2.1", "recommended": "61.2.0" },
+      "mappings": ["yarn (последняя)", "mojang", "parchment 2025.12.20"],
+      "notes": "Массовые переименования (ResourceLocation -> Identifier, пакет util). Последняя версия с Yarn/Intermediary."
+    },
+    {
+      "minecraft": "26.1.2",
+      "java": 25,
+      "status": "supported",
+      "neoforge": "26.1.2.106",
+      "forge": { "latest": "64.1.3", "recommended": "64.1.0" },
+      "mappings": ["mojang (обязательно)"],
+      "notes": "Новая схема версий Mojang (год.дроп.хотфикс). Java 25, деобфусцированный клиент."
+    },
+    {
+      "minecraft": "26.2",
+      "java": 25,
+      "status": "latest",
+      "fabric_api": "0.159.0+26.2",
+      "neoforge": "26.2.0.79",
+      "forge": { "latest": "65.1.3", "recommended": "65.1.0" },
+      "mappings": ["mojang (обязательно)"],
+      "notes": "Добавлен Vulkan-бэкенд, крупные изменения Blaze3d (GpuFormat, BlendFactor)."
+    }
+  ]
+}

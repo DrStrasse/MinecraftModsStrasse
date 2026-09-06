@@ -1,0 +1,36 @@
+# Артефакты сборки Gradle (в шаблонах есть свои .gitignore, это подстраховка)
+build/
+out/
+.gradle/
+run/
+run-*/
+runs/
+logs/
+src/generated/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.eclipse/
+.classpath
+.project
+.settings/
+bin/
+
+# ОС и мусор
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*~
+
+# Локальные секреты и переопределения
+*.env
+local.properties
+gradle-local.properties
+
+# Wrapper-jar нужен в репозитории — не игнорируем
+!gradle/wrapper/gradle-wrapper.jar

@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "by.strasse.strassemods.client.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"StrasseModsClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
