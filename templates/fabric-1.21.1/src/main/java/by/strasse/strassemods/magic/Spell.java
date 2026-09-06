@@ -6,7 +6,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -14,12 +13,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.LightBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -85,35 +80,36 @@ public enum Spell {
 		}
 	},
 
-	/** Алохомора — открывает и закрывает двери, люки и калитки на расстоянии, включая железные. */
+	/**
+	 * Алохомора — открывает замки и подаёт магический сигнал редстоуна.
+	 *
+	 * <p>Сначала пробует блок прямо под прицелом, затем ищет ближайший механизм
+	 * в радиусе {@link Wand#REDSTONE_RADIUS} блоков вокруг точки прицела — по объёму,
+	 * а не по лучу, поэтому рычаг за стенкой тоже сработает.</p>
+	 */
 	ALOHOMORA("alohomora", 30) {
 		@Override
 		public boolean cast(ServerLevel level, Player player, ItemStack wand) {
 			BlockHitResult hit = MagicRay.blockTarget(player, Wand.RANGE);
+			BlockPos aim = hit.getType() == HitResult.Type.BLOCK
+					? hit.getBlockPos()
+					: BlockPos.containing(player.getEyePosition().add(player.getViewVector(1.0F).scale(Wand.RANGE)));
 
-			if (hit.getType() != HitResult.Type.BLOCK) {
+			// 1. Точное попадание: дверь, люк, калитка, рычаг, кнопка, поршень, раздатчик.
+			BlockPos target = RedstoneTouch.isActuatable(level.getBlockState(aim)) ? aim : null;
+
+			// 2. Иначе — ближайший механизм в радиусе, даже спрятанный за стеной.
+			if (target == null) {
+				target = RedstoneTouch.findNearest(level, aim, Wand.REDSTONE_RADIUS);
+			}
+
+			if (target == null || !RedstoneTouch.activate(level, target, player)) {
 				return false;
 			}
 
-			BlockPos pos = hit.getBlockPos();
-			BlockState state = level.getBlockState(pos);
-			boolean opened;
-
-			if (state.getBlock() instanceof DoorBlock door) {
-				opened = !state.getValue(DoorBlock.OPEN);
-				door.setOpen(player, level, state, pos, opened);
-			} else if (state.hasProperty(BlockStateProperties.OPEN)) {
-				opened = !state.getValue(BlockStateProperties.OPEN);
-				level.setBlock(pos, state.setValue(BlockStateProperties.OPEN, opened), Block.UPDATE_ALL);
-				level.playSound(null, pos, opened ? SoundEvents.IRON_DOOR_OPEN : SoundEvents.IRON_DOOR_CLOSE,
-						SoundSource.BLOCKS, 0.9F, 1.1F);
-			} else {
-				return false;
-			}
-
-			MagicRay.trail(level, wandTip(player), Vec3.atCenterOf(pos), ParticleTypes.ENCHANT);
-			MagicRay.burst(level, Vec3.atCenterOf(pos), ParticleTypes.ENCHANT,
-					SoundEvents.ENCHANTMENT_TABLE_USE, opened ? 1.5F : 0.9F);
+			Vec3 center = Vec3.atCenterOf(target);
+			MagicRay.trail(level, wandTip(player), center, ParticleTypes.ENCHANT);
+			MagicRay.burst(level, center, ParticleTypes.ELECTRIC_SPARK, SoundEvents.ENCHANTMENT_TABLE_USE, 1.2F);
 			return true;
 		}
 	},

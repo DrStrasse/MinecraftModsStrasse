@@ -17,6 +17,13 @@ public final class Wand {
 	/** Дальность действия заклинаний в блоках. */
 	public static final double RANGE = 24.0D;
 
+	/**
+	 * Радиус поиска механизмов вокруг точки прицела для Алохоморы, в блоках.
+	 * Поиск идёт по объёму, поэтому стены не мешают: рычаг через блок или
+	 * через три от прицела всё равно сработает.
+	 */
+	public static final int REDSTONE_RADIUS = 3;
+
 	private static DataComponentType<Integer> selectedSpellComponent;
 
 	private Wand() {

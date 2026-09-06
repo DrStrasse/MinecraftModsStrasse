@@ -15,7 +15,7 @@
 | 08 | [Mixins](08-mixins.md) | инъекции, MixinExtras, refmap, отладка |
 | 09 | [Ресурсы и datagen](09-resources-datagen.md) | assets/data, форматы, генерация ресурсов кодом |
 | 10 | [Публикация и CI](10-publishing-ci.md) | сборка релиза, Modrinth/CurseForge, GitHub Actions |
-| 11 | [Мод «Волшебная палочка»](11-magic-wand.md) | рабочий мод: предмет-палочка, семь заклинаний, общий код для Fabric и NeoForge |
+| 11 | [Мод «Волшебная палочка»](11-magic-wand.md) | рабочий мод: предмет-палочка, семь заклинаний, магический сигнал редстоуна, общий код для Fabric и NeoForge |
 
 ## С чего начать
 
