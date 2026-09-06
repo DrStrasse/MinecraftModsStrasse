@@ -26,11 +26,13 @@ public class StrasseMods implements ModInitializer {
 		// Регистрация контента должна происходить именно здесь: реестры ещё открыты.
 		ModItems.init();
 
-		// Кладём предмет во вкладку "Ингредиенты" (событие из Fabric API).
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
 				.register(entries -> entries.accept(ModItems.STRASSE_INGOT));
 
-		LOGGER.info("Strasse Mods инициализирован ({} предметов)", 1);
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+				.register(entries -> entries.accept(ModItems.MAGIC_WAND));
+
+		LOGGER.info("Strasse Mods инициализирован: волшебная палочка готова");
 	}
 
 	/** Удобный хелпер: strassemods:<path>. */

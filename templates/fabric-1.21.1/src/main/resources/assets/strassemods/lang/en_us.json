@@ -1,3 +1,17 @@
 {
-  "item.strassemods.strasse_ingot": "Strasse Ingot"
+  "item.strassemods.strasse_ingot": "Strasse Ingot",
+  "item.strassemods.magic_wand": "Magic Wand",
+
+  "spell.strassemods.lumos": "Lumos",
+  "spell.strassemods.nox": "Nox",
+  "spell.strassemods.alohomora": "Alohomora",
+  "spell.strassemods.wingardium_leviosa": "Wingardium Leviosa",
+  "spell.strassemods.accio": "Accio",
+  "spell.strassemods.depulso": "Depulso",
+  "spell.strassemods.incendio": "Incendio",
+
+  "tooltip.strassemods.magic_wand.spell": "Spell: %s",
+  "tooltip.strassemods.magic_wand.hint": "Right-click to cast, Shift + right-click to switch",
+  "message.strassemods.spell_selected": "Spell selected: %s",
+  "message.strassemods.spell_failed": "%s fizzles out — no valid target"
 }

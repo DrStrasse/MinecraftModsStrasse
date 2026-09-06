@@ -22,18 +22,26 @@ tools/        sync-templates.sh, check-versions.sh, overlays/
 | Шаблон | MC | Java | Загрузчик | Основа |
 |---|---|---|---|---|
 | `templates/fabric-1.20.1`   | 1.20.1 | 17 | Fabric Loader 0.19.5 + API 0.92.12 | fabric-example-mod |
-| `templates/fabric-1.21.1`   | 1.21.1 | 21 | Fabric + API 0.116.17 | fabric-example-mod **+ рабочий пример предмета** |
+| `templates/fabric-1.21.1`   | 1.21.1 | 21 | Fabric + API 0.116.17 | fabric-example-mod **+ мод «Волшебная палочка»** |
 | `templates/fabric-1.21.8`   | 1.21.8 | 21 | Fabric + API 0.136.1 | fabric-example-mod |
 | `templates/fabric-1.21.11`  | 1.21.11 | 21 | Fabric + API 0.141.6 | fabric-example-mod |
 | `templates/fabric-26.2`     | 26.2 | 25 | Fabric + API 0.159.0 | fabric-example-mod |
 | `templates/forge-1.20.1`    | 1.20.1 | 17 | Forge 47.4.10 | MDK-Forge-ModDevGradle |
-| `templates/neoforge-1.21.1` | 1.21.1 | 21 | NeoForge 21.1.250 | NeoForge MDK |
+| `templates/neoforge-1.21.1` | 1.21.1 | 21 | NeoForge 21.1.250 | NeoForge MDK **+ мод «Волшебная палочка»** |
 | `templates/neoforge-1.21.8` | 1.21.8 | 21 | NeoForge 21.8.54 | NeoForge MDK |
 | `templates/neoforge-1.21.11`| 1.21.11 | 21 | NeoForge 21.11.45 | NeoForge MDK |
 | `templates/neoforge-26.2`   | 26.2 | 25 | NeoForge 26.2.0.79 | NeoForge MDK |
 
 Во всех шаблонах уже проставлены: mod id `strassemods`, пакет `by.strasse.strassemods`,
 группа, автор, лицензия MIT.
+
+### Волшебная палочка
+
+Шаблоны **1.21.1** (Fabric и NeoForge) содержат не заготовку, а рабочий мод: предмет
+«Волшебная палочка» с моделью ванильной палки и семью заклинаниями в духе Гарри Поттера —
+Люмос, Нокс, Алохомора, Вингардиум Левиоса, Акцио, Депульсо, Инсендио.
+ПКМ — применить, Shift + ПКМ — сменить заклинание. Логика заклинаний написана на чистом
+ванильном API и общая для обоих загрузчиков: [docs/11-magic-wand.md](docs/11-magic-wand.md).
 
 ## Быстрый старт
 
@@ -60,6 +68,7 @@ cd templates/neoforge-1.21.1   # или любой другой шаблон
 | 08 | [Mixins](docs/08-mixins.md) |
 | 09 | [Ресурсы и datagen](docs/09-resources-datagen.md) |
 | 10 | [Публикация и CI](docs/10-publishing-ci.md) |
+| 11 | [Мод «Волшебная палочка»](docs/11-magic-wand.md) — рабочий мод: предмет-палочка с семью заклинаниями для Fabric и NeoForge |
 
 ## Ключевые факты на сентябрь 2026
 
@@ -82,7 +91,9 @@ cd templates/neoforge-1.21.1   # или любой другой шаблон
 ./tools/sync-templates.sh fabric-1.21.1   # пересобрать один
 ```
 
-Собственный код кладите в `tools/overlays/<имя-шаблона>/` — он накладывается поверх
+Собственный код кладите в `tools/overlays/<имя-шаблона>/`, а то, что должно попасть
+сразу в несколько шаблонов, — в `tools/overlays/_shared/<имя>/` (карта раскладки —
+переменная `SHARED_OVERLAYS` в скрипте). Всё это накладывается поверх
 свежего апстрима при каждой синхронизации и потому не теряется. Версии загрузчиков,
 которые нужно держать выше апстримовых, задаются в секции `VERSION PINS`
 того же скрипта.

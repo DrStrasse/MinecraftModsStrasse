@@ -15,6 +15,7 @@
 | 08 | [Mixins](08-mixins.md) | инъекции, MixinExtras, refmap, отладка |
 | 09 | [Ресурсы и datagen](09-resources-datagen.md) | assets/data, форматы, генерация ресурсов кодом |
 | 10 | [Публикация и CI](10-publishing-ci.md) | сборка релиза, Modrinth/CurseForge, GitHub Actions |
+| 11 | [Мод «Волшебная палочка»](11-magic-wand.md) | рабочий мод: предмет-палочка, семь заклинаний, общий код для Fabric и NeoForge |
 
 ## С чего начать
 
@@ -23,6 +24,7 @@
 2. Поставьте нужную JDK — [раздел 02](02-dev-environment.md).
 3. Возьмите шаблон из [`templates/`](../templates) и запустите `./gradlew runClient`.
 4. Дальше — [Fabric](03-fabric.md) или [NeoForge](04-neoforge.md) по выбору.
+5. Живой пример готового мода — [раздел 11](11-magic-wand.md), «Волшебная палочка».
 
 ## Первоисточники
 

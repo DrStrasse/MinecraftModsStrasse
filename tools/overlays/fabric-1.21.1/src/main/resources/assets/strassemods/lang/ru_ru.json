@@ -1,3 +1,17 @@
 {
-  "item.strassemods.strasse_ingot": "Слиток Штрассе"
+  "item.strassemods.strasse_ingot": "Слиток Штрассе",
+  "item.strassemods.magic_wand": "Волшебная палочка",
+
+  "spell.strassemods.lumos": "Люмос",
+  "spell.strassemods.nox": "Нокс",
+  "spell.strassemods.alohomora": "Алохомора",
+  "spell.strassemods.wingardium_leviosa": "Вингардиум Левиоса",
+  "spell.strassemods.accio": "Акцио",
+  "spell.strassemods.depulso": "Депульсо",
+  "spell.strassemods.incendio": "Инсендио",
+
+  "tooltip.strassemods.magic_wand.spell": "Заклинание: %s",
+  "tooltip.strassemods.magic_wand.hint": "ПКМ — применить, Shift + ПКМ — сменить",
+  "message.strassemods.spell_selected": "Выбрано заклинание: %s",
+  "message.strassemods.spell_failed": "%s не сработало — нет подходящей цели"
 }

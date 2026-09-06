@@ -57,6 +57,29 @@ NEOFORGE_TEMPLATES="1.21.1 1.21.8 1.21.11 26.2"
 
 log() { printf '\033[36m[sync]\033[0m %s\n' "$*"; }
 
+# ---------------------------------------------------------------------------
+# Общие оверлеи: один и тот же код, который кладётся сразу в несколько шаблонов.
+# Формат: <каталог шаблона>|<каталог в tools/overlays/_shared>
+# Логика заклинаний волшебной палочки написана на чистом ванильном API,
+# поэтому идентична для Fabric и NeoForge одной версии игры.
+# ---------------------------------------------------------------------------
+SHARED_OVERLAYS="
+fabric-1.21.1|magic-1.21.1
+neoforge-1.21.1|magic-1.21.1
+"
+
+# Накладывает общий код (tools/overlays/_shared/<...>/) на шаблон.
+apply_shared() {
+  local name="$1" template shared
+  while IFS='|' read -r template shared; do
+    [ -z "${template:-}" ] && continue
+    [ "$template" = "$name" ] || continue
+    [ -d "$ROOT/tools/overlays/_shared/$shared" ] || continue
+    log "  shared: tools/overlays/_shared/$shared"
+    cp -r "$ROOT/tools/overlays/_shared/$shared/." "$ROOT/templates/$name/"
+  done <<< "$SHARED_OVERLAYS"
+}
+
 # Накладывает tools/overlays/<template>/ поверх апстрим-шаблона (наш собственный код).
 apply_overlay() {
   local name="$1"
@@ -171,6 +194,7 @@ for v in $FABRIC_TEMPLATES; do
   brand_fabric "$ROOT/templates/$name"
   sed -i "s/^rootProject.name = .*/rootProject.name = '$MOD_ID'/" "$ROOT/templates/$name/settings.gradle"
   apply_pins "$name"
+  apply_shared "$name"
   apply_overlay "$name"
 done
 
@@ -181,6 +205,7 @@ for v in $NEOFORGE_TEMPLATES; do
   clone_mdk "MDK-$v-ModDevGradle" "$ROOT/templates/$name"
   brand_mdk "$ROOT/templates/$name"
   apply_pins "$name"
+  apply_shared "$name"
   apply_overlay "$name"
 done
 
@@ -189,6 +214,7 @@ if want "forge-1.20.1" "${SELECT[@]+"${SELECT[@]}"}"; then
   clone_mdk "MDK-Forge-1.20.1-ModDevGradle" "$ROOT/templates/forge-1.20.1"
   brand_mdk "$ROOT/templates/forge-1.20.1"
   apply_pins "forge-1.20.1"
+  apply_shared "forge-1.20.1"
   apply_overlay "forge-1.20.1"
 fi
 
