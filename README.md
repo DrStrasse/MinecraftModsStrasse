@@ -102,17 +102,27 @@ cd templates/neoforge-1.21.1   # или любой другой шаблон
 
 ### Проверка сборки в CI
 
-Готовый workflow лежит в [`ci/build-templates.yml`](ci/build-templates.yml): матрица из
-10 шаблонов, каждый собирается на своей JDK (17/21/25), плюс линт JSON и bash.
+Готовых workflow два:
+
+* [`ci/build-templates.yml`](ci/build-templates.yml) — матрица из 10 шаблонов, каждый
+  собирается на своей JDK (17/21/25), плюс линт JSON и bash;
+* [`ci/build-magic-wand.yml`](ci/build-magic-wand.yml) — сборка мода «Волшебная палочка»
+  (Fabric и NeoForge 1.21.1) на JDK 21 с выкладкой готовых **jar в артефакты запуска**.
 
 Файл намеренно лежит **не** в `.github/workflows/` — интеграция, которой сделан этот
 коммит, не имеет права `workflows` и не может пушить файлы воркфлоу. Чтобы включить CI:
 
 ```bash
 mkdir -p .github/workflows
-cp ci/build-templates.yml .github/workflows/
-git add .github/workflows/build-templates.yml && git commit -m "ci: сборка шаблонов" && git push
+cp ci/build-templates.yml ci/build-magic-wand.yml .github/workflows/
+git add .github/workflows && git commit -m "ci: сборка шаблонов и jar палочки" && git push
 ```
+
+После этого jar-файлы мода берутся так: вкладка **Actions** → запуск
+«Волшебная палочка — сборка jar» → раздел **Artifacts** →
+`magic-wand-fabric-1.21.1` и `magic-wand-neoforge-1.21.1`. Тот же результат
+локально даёт `cd templates/fabric-1.21.1 && ./gradlew build` — jar появится
+в `build/libs/`.
 
 > Шаблоны собраны из официальных апстрим-проектов и версии сверены с maven, но в
 > изолированной среде, где готовился коммит, не было ни JDK, ни доступа к

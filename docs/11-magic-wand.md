@@ -166,6 +166,19 @@ templates/neoforge-1.21.1/
 └── src/main/resources/…              те же ресурсы
 ```
 
+## Сборка jar
+
+Локально:
+
+```bash
+cd templates/fabric-1.21.1     # или neoforge-1.21.1
+./gradlew build                # jar -> build/libs/strassemods-1.0.0.jar
+```
+
+Через GitHub Actions: скопируйте `ci/build-magic-wand.yml` в `.github/workflows/`
+и запушьте — workflow соберёт оба варианта на JDK 21 и выложит jar в артефакты
+запуска (`magic-wand-fabric-1.21.1`, `magic-wand-neoforge-1.21.1`).
+
 ## Проверка
 
 ```bash
