@@ -127,12 +127,13 @@ git add .github/workflows && git commit -m "ci: сборка шаблонов и
 ## Готовые jar без Gradle
 
 Если ждать CI не хочется, собранные файлы уже лежат в [`dist/`](dist/):
-`magic_wand_strasse-neoforge-1.21.1.jar` (кидается в `mods/` и работает) и
-`magic_wand_strasse-fabric-1.21.1-named.jar` (Mojang-имена, для dev-окружения).
+`magic_wand_strasse-neoforge-1.21.1.jar` и `magic_wand_strasse-fabric-1.21.1.jar` —
+оба кидаются в `mods/` и работают (Fabric-версии нужен ещё Fabric API).
 
 Они собраны прямо в изолированной среде, без Gradle и maven: компилятор ECJ +
 набор API-заглушек с точными сигнатурами 1.21.1, упаковка — питоновским
-`zipfile`. Устройство, воспроизведение и ограничения описаны в
+`zipfile`, а Fabric-версия ещё и переименована в intermediary (то, что обычно
+делает Loom). Устройство, воспроизведение и ограничения описаны в
 [`tools/offline-build/README.md`](tools/offline-build/README.md):
 
 ```bash

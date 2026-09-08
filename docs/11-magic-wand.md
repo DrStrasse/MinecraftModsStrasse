@@ -173,7 +173,7 @@ templates/neoforge-1.21.1/
 | Файл | Загрузчик | Готов к запуску |
 |---|---|---|
 | `magic_wand_strasse-neoforge-1.21.1.jar` | NeoForge 21.1.250+ | да — киньте в `mods/` |
-| `magic_wand_strasse-fabric-1.21.1-named.jar` | Fabric Loader | только dev-окружение (нужен ремап Loom) |
+| `magic_wand_strasse-fabric-1.21.1.jar` | Fabric Loader + Fabric API | да — сборка переименована в intermediary |
 
 Они собраны без Gradle — компилятором ECJ против набора API-заглушек; как это
 устроено, описано в [`tools/offline-build/README.md`](../tools/offline-build/README.md).

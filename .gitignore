@@ -34,3 +34,4 @@ gradle-local.properties
 
 # Wrapper-jar нужен в репозитории — не игнорируем
 !gradle/wrapper/gradle-wrapper.jar
+__pycache__/

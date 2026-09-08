@@ -30,4 +30,10 @@ fi
 "$WORK/jdk/jdk4py/java-runtime/bin/java" -cp "$WORK/ecj.jar" \
   org.eclipse.jdt.internal.compiler.batch.Main -version
 
+if [ ! -d "$WORK/yarn/mappings" ]; then
+  log "качаю маппинги yarn 1.21.1 (для ремапа Fabric-сборки)"
+  git clone -q --depth 1 --single-branch --branch 1.21.1 https://github.com/FabricMC/yarn.git "$WORK/yarn"
+fi
+log "маппингов yarn: $(find "$WORK/yarn/mappings" -name '*.mapping' | wc -l) файлов"
+
 log "готово. Теперь: python3 tools/offline-build/build.py --all"

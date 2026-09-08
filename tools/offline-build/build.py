@@ -54,10 +54,12 @@ TEMPLATES = {
     },
     "fabric-1.21.1": {
         "source_dirs": ["src/main/java", "src/client/java"],
+        "extra_sources": ["tools/offline-build/fabric-extra"],
         "resource_dirs": ["src/main/resources", "src/client/resources"],
         "exclude": ["**/mixin/**"],
         "metadata": "fabric",
         "jar": "magic_wand_strasse-fabric-1.21.1-named.jar",
+        "remap": "magic_wand_strasse-fabric-1.21.1.jar",
     },
 }
 
@@ -111,6 +113,9 @@ def read_gradle_properties(template_dir: Path) -> dict[str, str]:
 
 def collect_sources(template_dir: Path, config: dict) -> list[Path]:
     sources: list[Path] = []
+
+    for rel in config.get("extra_sources", []):
+        sources.extend(sorted((ROOT / rel).rglob("*.java")))
 
     for rel in config["source_dirs"]:
         base = template_dir / rel
@@ -180,6 +185,15 @@ def fabric_mod_json(raw: str, props: dict[str, str]) -> str:
     return json.dumps(data, ensure_ascii=False, indent=2) + "\n"
 
 
+def yarn_mappings() -> Path | None:
+    """Каталог маппингов yarn для ремапа Fabric-сборки."""
+    for candidate in (Path(os.environ["OFFLINE_BUILD_YARN"]) if os.environ.get("OFFLINE_BUILD_YARN") else None,
+                      WORK / "yarn" / "mappings", Path("/tmp/yarn/mappings")):
+        if candidate and candidate.exists():
+            return candidate
+    return None
+
+
 def build_jar(template: str, out_dir: Path, java: str, ecj: str, stub_classes: Path) -> Path:
     config = TEMPLATES[template]
     template_dir = ROOT / "templates" / template
@@ -195,7 +209,8 @@ def build_jar(template: str, out_dir: Path, java: str, ecj: str, stub_classes: P
     log(f"{template}: скомпилировано классов — {len(class_files)}")
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    jar_path = out_dir / config["jar"]
+    needs_remap = "remap" in config
+    jar_path = (WORK / config["jar"]) if needs_remap else (out_dir / config["jar"])
 
     # Фиксированная дата — чтобы одинаковый вход давал побайтово одинаковый jar.
     stamp = (2026, 1, 1, 0, 0, 0)
@@ -242,9 +257,27 @@ def build_jar(template: str, out_dir: Path, java: str, ecj: str, stub_classes: P
             write("META-INF/neoforge.mods.toml",
                   expand_placeholders(toml_template.read_text(encoding="utf-8"), props).encode("utf-8"))
 
-    log(f"{template}: готов {jar_path.relative_to(ROOT)} "
-        f"({jar_path.stat().st_size // 1024} КиБ)")
-    return jar_path
+    if not needs_remap:
+        log(f"{template}: готов {jar_path.relative_to(ROOT)} ({jar_path.stat().st_size // 1024} КиБ)")
+        return jar_path
+
+    # Fabric в продакшене работает с intermediary-именами — переименовываем.
+    mappings = yarn_mappings()
+
+    if mappings is None:
+        sys.exit("нет маппингов yarn для ремапа Fabric-сборки — запустите "
+                 "tools/offline-build/fetch-toolchain.sh")
+
+    sys.path.insert(0, str(ROOT / "tools" / "offline-build"))
+    import fabric_remap
+
+    target = out_dir / config["remap"]
+    fabric_remap.remap_jar(mappings, jar_path, target,
+                           ROOT / "tools" / "offline-build" / "fabric-mappings.txt")
+    fabric_remap.remap_stub_classes(fabric_remap.Yarn(mappings), stub_classes,
+                                    WORK / "stub-classes-inter")
+    log(f"{template}: готов {target.relative_to(ROOT)} ({target.stat().st_size // 1024} КиБ)")
+    return target
 
 
 def main() -> None:

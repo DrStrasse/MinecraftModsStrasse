@@ -1,0 +1,264 @@
+# Соответствие имён mojmap -> intermediary (Fabric 1.21.1)
+# Сгенерировано tools/offline-build/fabric_remap.py
+
+net/minecraft/core/BlockPos#betweenClosed (Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+    -> net/minecraft/class_2338#method_10097 (Lnet/minecraft/class_2338;Lnet/minecraft/class_2338;)Ljava/lang/Iterable;
+net/minecraft/core/BlockPos#containing (Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_2338#method_49638 (Lnet/minecraft/class_2374;)Lnet/minecraft/class_2338;
+net/minecraft/core/BlockPos#immutable ()Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_2338#method_10062 ()Lnet/minecraft/class_2338;
+net/minecraft/core/BlockPos#offset (III)Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_2338#method_34592 (III)Lnet/minecraft/class_2338; (объявлен в net/minecraft/class_2382)
+net/minecraft/core/BlockPos#relative (Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_2338#method_35851 (Lnet/minecraft/class_2350;)Lnet/minecraft/class_2338; (объявлен в net/minecraft/class_2382)
+net/minecraft/core/Registry#get (Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+    -> net/minecraft/class_2378#method_10223 (Lnet/minecraft/class_2960;)Ljava/lang/Object;
+net/minecraft/core/Registry#key ()Lnet/minecraft/resources/ResourceKey;
+    -> net/minecraft/class_2378#method_30517 ()Lnet/minecraft/class_5321;
+net/minecraft/core/Registry#register (Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)Ljava/lang/Object;
+    -> net/minecraft/class_2378#method_10230 (Lnet/minecraft/class_2378;Lnet/minecraft/class_2960;Ljava/lang/Object;)Ljava/lang/Object;
+net/minecraft/core/Registry#wrapAsHolder (Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+    -> net/minecraft/class_2378#method_47983 (Ljava/lang/Object;)Lnet/minecraft/class_6880;
+net/minecraft/core/component/DataComponentType#builder ()Lnet/minecraft/core/component/DataComponentType$Builder;
+    -> net/minecraft/class_9331#method_57873 ()Lnet/minecraft/class_9331$class_9332;
+net/minecraft/core/component/DataComponentType$Builder#build ()Lnet/minecraft/core/component/DataComponentType;
+    -> net/minecraft/class_9331$class_9332#method_57880 ()Lnet/minecraft/class_9331;
+net/minecraft/core/component/DataComponentType$Builder#networkSynchronized (Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/core/component/DataComponentType$Builder;
+    -> net/minecraft/class_9331$class_9332#method_57882 (Lnet/minecraft/class_9139;)Lnet/minecraft/class_9331$class_9332;
+net/minecraft/core/component/DataComponentType$Builder#persistent (Lcom/mojang/serialization/Codec;)Lnet/minecraft/core/component/DataComponentType$Builder;
+    -> net/minecraft/class_9331$class_9332#method_57881 (Lcom/mojang/serialization/Codec;)Lnet/minecraft/class_9331$class_9332;
+net/minecraft/core/registries/BuiltInRegistries#DATA_COMPONENT_TYPE Lnet/minecraft/core/Registry;
+    -> net/minecraft/class_7923#field_49658 Lnet/minecraft/class_2378;
+net/minecraft/network/chat/Component#translatable (Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+    -> net/minecraft/class_2561#method_43471 (Ljava/lang/String;)Lnet/minecraft/class_5250;
+net/minecraft/network/chat/Component#translatable (Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+    -> net/minecraft/class_2561#method_43469 (Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/class_5250;
+net/minecraft/network/chat/MutableComponent#withStyle (Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+    -> net/minecraft/class_5250#method_27692 (Lnet/minecraft/class_124;)Lnet/minecraft/class_5250;
+net/minecraft/network/codec/ByteBufCodecs#VAR_INT Lnet/minecraft/network/codec/StreamCodec;
+    -> net/minecraft/class_9135#field_48550 Lnet/minecraft/class_9139;
+net/minecraft/resources/ResourceKey#location ()Lnet/minecraft/resources/ResourceLocation;
+    -> net/minecraft/class_5321#method_29177 ()Lnet/minecraft/class_2960;
+net/minecraft/resources/ResourceLocation#fromNamespaceAndPath (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+    -> net/minecraft/class_2960#method_60655 (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/class_2960;
+net/minecraft/resources/ResourceLocation#parse (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+    -> net/minecraft/class_2960#method_60654 (Ljava/lang/String;)Lnet/minecraft/class_2960;
+net/minecraft/server/level/ServerLevel#getBlockState (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    -> net/minecraft/class_3218#method_8320 (Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680; (объявлен в net/minecraft/class_1922)
+net/minecraft/server/level/ServerLevel#isEmptyBlock (Lnet/minecraft/core/BlockPos;)Z
+    -> net/minecraft/class_3218#method_22347 (Lnet/minecraft/class_2338;)Z (объявлен в net/minecraft/class_4538)
+net/minecraft/server/level/ServerLevel#playSound (Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+    -> net/minecraft/class_3218#method_43128 (Lnet/minecraft/class_1657;DDDLnet/minecraft/class_3414;Lnet/minecraft/class_3419;FF)V (объявлен в net/minecraft/class_1937)
+net/minecraft/server/level/ServerLevel#playSound (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+    -> net/minecraft/class_3218#method_8396 (Lnet/minecraft/class_1657;Lnet/minecraft/class_2338;Lnet/minecraft/class_3414;Lnet/minecraft/class_3419;FF)V (объявлен в net/minecraft/class_1936)
+net/minecraft/server/level/ServerLevel#removeBlock (Lnet/minecraft/core/BlockPos;Z)Z
+    -> net/minecraft/class_3218#method_8650 (Lnet/minecraft/class_2338;Z)Z (объявлен в net/minecraft/class_1945)
+net/minecraft/server/level/ServerLevel#scheduleTick (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V
+    -> net/minecraft/class_3218#method_39279 (Lnet/minecraft/class_2338;Lnet/minecraft/class_2248;I)V (объявлен в net/minecraft/class_1936)
+net/minecraft/server/level/ServerLevel#sendParticles (Lnet/minecraft/core/particles/ParticleOptions;DDDIDDDD)I
+    -> net/minecraft/class_3218#method_14199 (Lnet/minecraft/class_2394;DDDIDDDD)I
+net/minecraft/server/level/ServerLevel#setBlock (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    -> net/minecraft/class_3218#method_8652 (Lnet/minecraft/class_2338;Lnet/minecraft/class_2680;I)Z (объявлен в net/minecraft/class_1945)
+net/minecraft/server/level/ServerLevel#setBlockAndUpdate (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+    -> net/minecraft/class_3218#method_8501 (Lnet/minecraft/class_2338;Lnet/minecraft/class_2680;)Z (объявлен в net/minecraft/class_1937)
+net/minecraft/server/level/ServerLevel#updateNeighborsAt (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V
+    -> net/minecraft/class_3218#method_8452 (Lnet/minecraft/class_2338;Lnet/minecraft/class_2248;)V (объявлен в net/minecraft/class_1937)
+net/minecraft/stats/StatType#get (Ljava/lang/Object;)Lnet/minecraft/stats/Stat;
+    -> net/minecraft/class_3448#method_14956 (Ljava/lang/Object;)Lnet/minecraft/class_3445;
+net/minecraft/world/InteractionResultHolder#consume (Ljava/lang/Object;)Lnet/minecraft/world/InteractionResultHolder;
+    -> net/minecraft/class_1271#method_22428 (Ljava/lang/Object;)Lnet/minecraft/class_1271;
+net/minecraft/world/InteractionResultHolder#fail (Ljava/lang/Object;)Lnet/minecraft/world/InteractionResultHolder;
+    -> net/minecraft/class_1271#method_22431 (Ljava/lang/Object;)Lnet/minecraft/class_1271;
+net/minecraft/world/InteractionResultHolder#success (Ljava/lang/Object;)Lnet/minecraft/world/InteractionResultHolder;
+    -> net/minecraft/class_1271#method_22427 (Ljava/lang/Object;)Lnet/minecraft/class_1271;
+net/minecraft/world/entity/Entity#fallDistance F
+    -> net/minecraft/class_1297#field_6017 F
+net/minecraft/world/entity/Entity#getBbHeight ()F
+    -> net/minecraft/class_1297#method_17682 ()F
+net/minecraft/world/entity/Entity#getBoundingBox ()Lnet/minecraft/world/phys/AABB;
+    -> net/minecraft/class_1297#method_5829 ()Lnet/minecraft/class_238; (объявлен в net/minecraft/class_5568)
+net/minecraft/world/entity/Entity#getDeltaMovement ()Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_1297#method_18798 ()Lnet/minecraft/class_243;
+net/minecraft/world/entity/Entity#hasImpulse Z
+    -> net/minecraft/class_1297#field_6007 Z
+net/minecraft/world/entity/Entity#hurtMarked Z
+    -> net/minecraft/class_1297#field_6037 Z
+net/minecraft/world/entity/Entity#isSpectator ()Z
+    -> net/minecraft/class_1297#method_7325 ()Z
+net/minecraft/world/entity/Entity#position ()Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_1297#method_19538 ()Lnet/minecraft/class_243;
+net/minecraft/world/entity/Entity#setDeltaMovement (DDD)V
+    -> net/minecraft/class_1297#method_18800 (DDD)V
+net/minecraft/world/entity/Entity#setDeltaMovement (Lnet/minecraft/world/phys/Vec3;)V
+    -> net/minecraft/class_1297#method_18799 (Lnet/minecraft/class_243;)V
+net/minecraft/world/entity/LivingEntity#addEffect (Lnet/minecraft/world/effect/MobEffectInstance;)Z
+    -> net/minecraft/class_1309#method_6092 (Lnet/minecraft/class_1293;)Z
+net/minecraft/world/entity/LivingEntity#getSlotForHand (Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/entity/EquipmentSlot;
+    -> net/minecraft/class_1309#method_56079 (Lnet/minecraft/class_1268;)Lnet/minecraft/class_1304;
+net/minecraft/world/entity/player/Abilities#instabuild Z
+    -> net/minecraft/class_1656#field_7477 Z
+net/minecraft/world/entity/player/Player#awardStat (Lnet/minecraft/stats/Stat;)V
+    -> net/minecraft/class_1657#method_7259 (Lnet/minecraft/class_3445;)V
+net/minecraft/world/entity/player/Player#blockPosition ()Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_1657#method_24515 ()Lnet/minecraft/class_2338; (объявлен в net/minecraft/class_5568)
+net/minecraft/world/entity/player/Player#displayClientMessage (Lnet/minecraft/network/chat/Component;Z)V
+    -> net/minecraft/class_1657#method_7353 (Lnet/minecraft/class_2561;Z)V
+net/minecraft/world/entity/player/Player#getAbilities ()Lnet/minecraft/world/entity/player/Abilities;
+    -> net/minecraft/class_1657#method_31549 ()Lnet/minecraft/class_1656;
+net/minecraft/world/entity/player/Player#getBoundingBox ()Lnet/minecraft/world/phys/AABB;
+    -> net/minecraft/class_1657#method_5829 ()Lnet/minecraft/class_238; (объявлен в net/minecraft/class_5568)
+net/minecraft/world/entity/player/Player#getCooldowns ()Lnet/minecraft/world/item/ItemCooldowns;
+    -> net/minecraft/class_1657#method_7357 ()Lnet/minecraft/class_1796;
+net/minecraft/world/entity/player/Player#getEyePosition ()Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_1657#method_33571 ()Lnet/minecraft/class_243; (объявлен в net/minecraft/class_1297)
+net/minecraft/world/entity/player/Player#getItemInHand (Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+    -> net/minecraft/class_1657#method_5998 (Lnet/minecraft/class_1268;)Lnet/minecraft/class_1799; (объявлен в net/minecraft/class_1309)
+net/minecraft/world/entity/player/Player#getViewVector (F)Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_1657#method_5828 (F)Lnet/minecraft/class_243; (объявлен в net/minecraft/class_1297)
+net/minecraft/world/entity/player/Player#getX ()D
+    -> net/minecraft/class_1657#method_23317 ()D (объявлен в net/minecraft/class_1297)
+net/minecraft/world/entity/player/Player#getY ()D
+    -> net/minecraft/class_1657#method_23318 ()D (объявлен в net/minecraft/class_1297)
+net/minecraft/world/entity/player/Player#getZ ()D
+    -> net/minecraft/class_1657#method_23321 ()D (объявлен в net/minecraft/class_1297)
+net/minecraft/world/entity/player/Player#isSecondaryUseActive ()Z
+    -> net/minecraft/class_1657#method_21823 ()Z
+net/minecraft/world/entity/player/Player#level ()Lnet/minecraft/world/level/Level;
+    -> net/minecraft/class_1657#method_37908 ()Lnet/minecraft/class_1937; (объявлен в net/minecraft/class_1297)
+net/minecraft/world/entity/player/Player#position ()Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_1657#method_19538 ()Lnet/minecraft/class_243; (объявлен в net/minecraft/class_1297)
+net/minecraft/world/item/CreativeModeTabs#INGREDIENTS Lnet/minecraft/resources/ResourceKey;
+    -> net/minecraft/class_7706#field_41062 Lnet/minecraft/class_5321;
+net/minecraft/world/item/CreativeModeTabs#TOOLS_AND_UTILITIES Lnet/minecraft/resources/ResourceKey;
+    -> net/minecraft/class_7706#field_41060 Lnet/minecraft/class_5321;
+net/minecraft/world/item/Item$Properties#component (Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Lnet/minecraft/world/item/Item$Properties;
+    -> net/minecraft/class_1792$class_1793#method_57349 (Lnet/minecraft/class_9331;Ljava/lang/Object;)Lnet/minecraft/class_1792$class_1793;
+net/minecraft/world/item/Item$Properties#durability (I)Lnet/minecraft/world/item/Item$Properties;
+    -> net/minecraft/class_1792$class_1793#method_7895 (I)Lnet/minecraft/class_1792$class_1793;
+net/minecraft/world/item/Item$Properties#stacksTo (I)Lnet/minecraft/world/item/Item$Properties;
+    -> net/minecraft/class_1792$class_1793#method_7889 (I)Lnet/minecraft/class_1792$class_1793;
+net/minecraft/world/item/ItemCooldowns#addCooldown (Lnet/minecraft/world/item/Item;I)V
+    -> net/minecraft/class_1796#method_7906 (Lnet/minecraft/class_1792;I)V
+net/minecraft/world/item/ItemStack#get (Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+    -> net/minecraft/class_1799#method_57824 (Lnet/minecraft/class_9331;)Ljava/lang/Object; (объявлен в net/minecraft/class_9322)
+net/minecraft/world/item/ItemStack#hurtAndBreak (ILnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)V
+    -> net/minecraft/class_1799#method_7970 (ILnet/minecraft/class_1309;Lnet/minecraft/class_1304;)V
+net/minecraft/world/item/ItemStack#set (Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+    -> net/minecraft/class_1799#method_57379 (Lnet/minecraft/class_9331;Ljava/lang/Object;)Ljava/lang/Object;
+net/minecraft/world/level/Level#clip (Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;
+    -> net/minecraft/class_1937#method_17742 (Lnet/minecraft/class_3959;)Lnet/minecraft/class_3965; (объявлен в net/minecraft/class_1922)
+net/minecraft/world/level/Level#getEntities (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;
+    -> net/minecraft/class_1937#method_8333 (Lnet/minecraft/class_1297;Lnet/minecraft/class_238;Ljava/util/function/Predicate;)Ljava/util/List; (объявлен в net/minecraft/class_1924)
+net/minecraft/world/level/block/BaseFireBlock#getState (Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    -> net/minecraft/class_4770#method_24416 (Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;
+net/minecraft/world/level/block/Block#defaultBlockState ()Lnet/minecraft/world/level/block/state/BlockState;
+    -> net/minecraft/class_2248#method_9564 ()Lnet/minecraft/class_2680;
+net/minecraft/world/level/block/DoorBlock#setOpen (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Z)V
+    -> net/minecraft/class_2323#method_10033 (Lnet/minecraft/class_1297;Lnet/minecraft/class_1937;Lnet/minecraft/class_2680;Lnet/minecraft/class_2338;Z)V
+net/minecraft/world/level/block/LightBlock#LEVEL Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+    -> net/minecraft/class_6089#field_31187 Lnet/minecraft/class_2758;
+net/minecraft/world/level/block/state/BlockState#canBeReplaced ()Z
+    -> net/minecraft/class_2680#method_45474 ()Z (объявлен в net/minecraft/class_4970$class_4971)
+net/minecraft/world/level/block/state/BlockState#cycle (Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Object;
+    -> net/minecraft/class_2680#method_28493 (Lnet/minecraft/class_2769;)Ljava/lang/Object; (объявлен в net/minecraft/class_2688)
+net/minecraft/world/level/block/state/BlockState#getBlock ()Lnet/minecraft/world/level/block/Block;
+    -> net/minecraft/class_2680#method_26204 ()Lnet/minecraft/class_2248; (объявлен в net/minecraft/class_4970$class_4971)
+net/minecraft/world/level/block/state/BlockState#getValue (Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+    -> net/minecraft/class_2680#method_11654 (Lnet/minecraft/class_2769;)Ljava/lang/Comparable; (объявлен в net/minecraft/class_2688)
+net/minecraft/world/level/block/state/BlockState#hasProperty (Lnet/minecraft/world/level/block/state/properties/Property;)Z
+    -> net/minecraft/class_2680#method_28498 (Lnet/minecraft/class_2769;)Z (объявлен в net/minecraft/class_2688)
+net/minecraft/world/level/block/state/BlockState#is (Lnet/minecraft/world/level/block/Block;)Z
+    -> net/minecraft/class_2680#method_27852 (Lnet/minecraft/class_2248;)Z (объявлен в net/minecraft/class_4970$class_4971)
+net/minecraft/world/level/block/state/BlockState#setValue (Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    -> net/minecraft/class_2680#method_11657 (Lnet/minecraft/class_2769;Ljava/lang/Comparable;)Ljava/lang/Object; (объявлен в net/minecraft/class_2688)
+net/minecraft/world/level/block/state/properties/BlockStateProperties#EXTENDED Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    -> net/minecraft/class_2741#field_12552 Lnet/minecraft/class_2746;
+net/minecraft/world/level/block/state/properties/BlockStateProperties#FACING Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    -> net/minecraft/class_2741#field_12525 Lnet/minecraft/class_2753;
+net/minecraft/world/level/block/state/properties/BlockStateProperties#OPEN Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    -> net/minecraft/class_2741#field_12537 Lnet/minecraft/class_2746;
+net/minecraft/world/level/block/state/properties/BlockStateProperties#PISTON_TYPE Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    -> net/minecraft/class_2741#field_12492 Lnet/minecraft/class_2754;
+net/minecraft/world/level/block/state/properties/BlockStateProperties#POWERED Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    -> net/minecraft/class_2741#field_12484 Lnet/minecraft/class_2746;
+net/minecraft/world/phys/AABB#clip (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)Ljava/util/Optional;
+    -> net/minecraft/class_238#method_992 (Lnet/minecraft/class_243;Lnet/minecraft/class_243;)Ljava/util/Optional;
+net/minecraft/world/phys/AABB#expandTowards (Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/AABB;
+    -> net/minecraft/class_238#method_18804 (Lnet/minecraft/class_243;)Lnet/minecraft/class_238;
+net/minecraft/world/phys/AABB#inflate (D)Lnet/minecraft/world/phys/AABB;
+    -> net/minecraft/class_238#method_1014 (D)Lnet/minecraft/class_238;
+net/minecraft/world/phys/BlockHitResult#getBlockPos ()Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_3965#method_17777 ()Lnet/minecraft/class_2338;
+net/minecraft/world/phys/BlockHitResult#getDirection ()Lnet/minecraft/core/Direction;
+    -> net/minecraft/class_3965#method_17780 ()Lnet/minecraft/class_2350;
+net/minecraft/world/phys/BlockHitResult#getType ()Lnet/minecraft/world/phys/HitResult$Type;
+    -> net/minecraft/class_3965#method_17783 ()Lnet/minecraft/class_239$class_240; (объявлен в net/minecraft/class_239)
+net/minecraft/world/phys/Vec3#add (DDD)Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_243#method_1031 (DDD)Lnet/minecraft/class_243;
+net/minecraft/world/phys/Vec3#add (Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_243#method_1019 (Lnet/minecraft/class_243;)Lnet/minecraft/class_243;
+net/minecraft/world/phys/Vec3#atCenterOf (Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_243#method_24953 (Lnet/minecraft/class_2382;)Lnet/minecraft/class_243;
+net/minecraft/world/phys/Vec3#distanceToSqr (Lnet/minecraft/world/phys/Vec3;)D
+    -> net/minecraft/class_243#method_1025 (Lnet/minecraft/class_243;)D
+net/minecraft/world/phys/Vec3#length ()D
+    -> net/minecraft/class_243#method_1033 ()D
+net/minecraft/world/phys/Vec3#normalize ()Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_243#method_1029 ()Lnet/minecraft/class_243;
+net/minecraft/world/phys/Vec3#scale (D)Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_243#method_1021 (D)Lnet/minecraft/class_243;
+net/minecraft/world/phys/Vec3#subtract (DDD)Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_243#method_1023 (DDD)Lnet/minecraft/class_243;
+net/minecraft/world/phys/Vec3#subtract (Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_243#method_1020 (Lnet/minecraft/class_243;)Lnet/minecraft/class_243;
+net/minecraft/world/phys/Vec3#x D
+    -> net/minecraft/class_243#field_1352 D
+net/minecraft/world/phys/Vec3#y D
+    -> net/minecraft/class_243#field_1351 D
+net/minecraft/world/phys/Vec3#z D
+    -> net/minecraft/class_243#field_1350 D
+
+# Константы, перенаправленные на класс-мост
+net/minecraft/ChatFormatting#DARK_GRAY -> by/strasse/strassemods/compat/VanillaRefs#ChatFormatting_DARK_GRAY
+net/minecraft/ChatFormatting#GRAY -> by/strasse/strassemods/compat/VanillaRefs#ChatFormatting_GRAY
+net/minecraft/ChatFormatting#LIGHT_PURPLE -> by/strasse/strassemods/compat/VanillaRefs#ChatFormatting_LIGHT_PURPLE
+net/minecraft/ChatFormatting#RED -> by/strasse/strassemods/compat/VanillaRefs#ChatFormatting_RED
+net/minecraft/core/particles/ParticleTypes#ELECTRIC_SPARK -> by/strasse/strassemods/compat/VanillaRefs#ParticleTypes_ELECTRIC_SPARK
+net/minecraft/core/particles/ParticleTypes#ENCHANT -> by/strasse/strassemods/compat/VanillaRefs#ParticleTypes_ENCHANT
+net/minecraft/core/particles/ParticleTypes#END_ROD -> by/strasse/strassemods/compat/VanillaRefs#ParticleTypes_END_ROD
+net/minecraft/core/particles/ParticleTypes#FLAME -> by/strasse/strassemods/compat/VanillaRefs#ParticleTypes_FLAME
+net/minecraft/core/particles/ParticleTypes#GLOW -> by/strasse/strassemods/compat/VanillaRefs#ParticleTypes_GLOW
+net/minecraft/core/particles/ParticleTypes#SMOKE -> by/strasse/strassemods/compat/VanillaRefs#ParticleTypes_SMOKE
+net/minecraft/core/particles/ParticleTypes#WITCH -> by/strasse/strassemods/compat/VanillaRefs#ParticleTypes_WITCH
+net/minecraft/core/registries/BuiltInRegistries#ITEM -> by/strasse/strassemods/compat/VanillaRefs#BuiltInRegistries_ITEM
+net/minecraft/sounds/SoundEvents#AMETHYST_BLOCK_CHIME -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_AMETHYST_BLOCK_CHIME
+net/minecraft/sounds/SoundEvents#BOOK_PAGE_TURN -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_BOOK_PAGE_TURN
+net/minecraft/sounds/SoundEvents#DISPENSER_DISPENSE -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_DISPENSER_DISPENSE
+net/minecraft/sounds/SoundEvents#ENCHANTMENT_TABLE_USE -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_ENCHANTMENT_TABLE_USE
+net/minecraft/sounds/SoundEvents#EVOKER_PREPARE_SUMMON -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_EVOKER_PREPARE_SUMMON
+net/minecraft/sounds/SoundEvents#EXPERIENCE_ORB_PICKUP -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_EXPERIENCE_ORB_PICKUP
+net/minecraft/sounds/SoundEvents#FLINTANDSTEEL_USE -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_FLINTANDSTEEL_USE
+net/minecraft/sounds/SoundEvents#GENERIC_EXTINGUISH_FIRE -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_GENERIC_EXTINGUISH_FIRE
+net/minecraft/sounds/SoundEvents#ILLUSIONER_CAST_SPELL -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_ILLUSIONER_CAST_SPELL
+net/minecraft/sounds/SoundEvents#IRON_DOOR_CLOSE -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_IRON_DOOR_CLOSE
+net/minecraft/sounds/SoundEvents#IRON_DOOR_OPEN -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_IRON_DOOR_OPEN
+net/minecraft/sounds/SoundEvents#ITEM_BREAK -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_ITEM_BREAK
+net/minecraft/sounds/SoundEvents#LEVER_CLICK -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_LEVER_CLICK
+net/minecraft/sounds/SoundEvents#PISTON_CONTRACT -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_PISTON_CONTRACT
+net/minecraft/sounds/SoundEvents#PISTON_EXTEND -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_PISTON_EXTEND
+net/minecraft/sounds/SoundEvents#STONE_BUTTON_CLICK_ON -> by/strasse/strassemods/compat/VanillaRefs#SoundEvents_STONE_BUTTON_CLICK_ON
+net/minecraft/sounds/SoundSource#BLOCKS -> by/strasse/strassemods/compat/VanillaRefs#SoundSource_BLOCKS
+net/minecraft/sounds/SoundSource#PLAYERS -> by/strasse/strassemods/compat/VanillaRefs#SoundSource_PLAYERS
+net/minecraft/stats/Stats#ITEM_USED -> by/strasse/strassemods/compat/VanillaRefs#Stats_ITEM_USED
+net/minecraft/world/effect/MobEffects#LEVITATION -> by/strasse/strassemods/compat/VanillaRefs#MobEffects_LEVITATION
+net/minecraft/world/level/ClipContext$Block#OUTLINE -> by/strasse/strassemods/compat/VanillaRefs#ClipContext$Block_OUTLINE
+net/minecraft/world/level/ClipContext$Fluid#NONE -> by/strasse/strassemods/compat/VanillaRefs#ClipContext$Fluid_NONE
+net/minecraft/world/level/block/Blocks#DISPENSER -> by/strasse/strassemods/compat/VanillaRefs#Blocks_DISPENSER
+net/minecraft/world/level/block/Blocks#DROPPER -> by/strasse/strassemods/compat/VanillaRefs#Blocks_DROPPER
+net/minecraft/world/level/block/Blocks#LIGHT -> by/strasse/strassemods/compat/VanillaRefs#Blocks_LIGHT
+net/minecraft/world/level/block/Blocks#PISTON -> by/strasse/strassemods/compat/VanillaRefs#Blocks_PISTON
+net/minecraft/world/level/block/Blocks#PISTON_HEAD -> by/strasse/strassemods/compat/VanillaRefs#Blocks_PISTON_HEAD
+net/minecraft/world/level/block/Blocks#STICKY_PISTON -> by/strasse/strassemods/compat/VanillaRefs#Blocks_STICKY_PISTON
+net/minecraft/world/level/block/state/properties/PistonType#DEFAULT -> by/strasse/strassemods/compat/VanillaRefs#PistonType_DEFAULT
+net/minecraft/world/level/block/state/properties/PistonType#STICKY -> by/strasse/strassemods/compat/VanillaRefs#PistonType_STICKY
+net/minecraft/world/phys/HitResult$Type#BLOCK -> by/strasse/strassemods/compat/VanillaRefs#HitResult$Type_BLOCK

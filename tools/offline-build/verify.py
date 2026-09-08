@@ -110,9 +110,9 @@ def java_binary() -> str:
     return str(candidate) if candidate.exists() else "java"
 
 
-def load_classes(jar: Path) -> bool:
+def load_classes(jar: Path, intermediary: bool = False) -> bool:
     """Загружает все классы мода в JVM — проверка структуры и верификации байткода."""
-    stub_classes = WORK / "stub-classes"
+    stub_classes = WORK / ("stub-classes-inter" if intermediary else "stub-classes")
 
     if not stub_classes.exists():
         print("  ! нет скомпилированных заглушек — пропускаю загрузку в JVM")
@@ -189,7 +189,9 @@ def main() -> None:
         print(f"  классов: {classes}, версия class-файлов: {sorted(versions)} "
               f"(65 = Java 21)")
         print(f"  внешних обращений к API: {len(references)}")
-        everything_ok &= load_classes(jar)
+        intermediary = any("net/minecraft/class_" in reference for reference in references)
+        print(f"  неймспейс: {'intermediary (продакшен Fabric)' if intermediary else 'Mojang'}")
+        everything_ok &= load_classes(jar, intermediary)
 
         report_lines.append(f"### {jar.name}")
         report_lines.append(f"классов: {classes}, версия байткода: {sorted(versions)}")
