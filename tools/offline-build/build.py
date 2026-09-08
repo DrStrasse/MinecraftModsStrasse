@@ -50,14 +50,14 @@ TEMPLATES = {
         "resource_dirs": ["src/main/resources"],
         "exclude": [],
         "metadata": "neoforge",
-        "jar": "strassemods-neoforge-1.21.1.jar",
+        "jar": "magic_wand_strasse-neoforge-1.21.1.jar",
     },
     "fabric-1.21.1": {
         "source_dirs": ["src/main/java", "src/client/java"],
         "resource_dirs": ["src/main/resources", "src/client/resources"],
         "exclude": ["**/mixin/**"],
         "metadata": "fabric",
-        "jar": "strassemods-fabric-1.21.1-named.jar",
+        "jar": "magic_wand_strasse-fabric-1.21.1-named.jar",
     },
 }
 
@@ -209,7 +209,8 @@ def build_jar(template: str, out_dir: Path, java: str, ecj: str, stub_classes: P
 
         manifest = (
             "Manifest-Version: 1.0\r\n"
-            f"Implementation-Title: {props.get('mod_name', 'Strasse Mods')}\r\n"
+            "Implementation-Title: magic_wand_strasse\r\n"
+            f"Specification-Title: {props.get('mod_name', 'Strasse Mods')}\r\n"
             f"Implementation-Version: {props['mod_version']}\r\n"
             f"Implementation-Vendor: {props.get('mod_authors', 'DrStrasse')}\r\n"
             "Built-By: tools/offline-build/build.py\r\n"

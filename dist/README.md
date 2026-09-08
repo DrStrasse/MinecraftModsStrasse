@@ -5,13 +5,13 @@
 
 | Файл | Загрузчик | Готов к запуску | Комментарий |
 |---|---|---|---|
-| `strassemods-neoforge-1.21.1.jar` | NeoForge 21.1.250+ | да | основная сборка |
-| `strassemods-fabric-1.21.1-named.jar` | Fabric Loader | нет, только dev-окружение | нужен ремап Loom (см. ниже) |
+| `magic_wand_strasse-neoforge-1.21.1.jar` | NeoForge 21.1.250+ | да | основная сборка |
+| `magic_wand_strasse-fabric-1.21.1-named.jar` | Fabric Loader | нет, только dev-окружение | нужен ремап Loom (см. ниже) |
 
 ## Установка (NeoForge)
 
 1. Установите NeoForge **21.1.250** или новее для Minecraft **1.21.1**.
-2. Скопируйте `strassemods-neoforge-1.21.1.jar` в `.minecraft/mods/`.
+2. Скопируйте `magic_wand_strasse-neoforge-1.21.1.jar` в `.minecraft/mods/`.
 3. Запустите игру профилем NeoForge 1.21.1.
 4. Скрафтите палочку: **палка + осколок аметиста + светопыль** (крафт без формы),
    либо возьмите её из вкладки «Инструменты» в креативе.

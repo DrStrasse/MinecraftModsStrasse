@@ -127,8 +127,8 @@ git add .github/workflows && git commit -m "ci: сборка шаблонов и
 ## Готовые jar без Gradle
 
 Если ждать CI не хочется, собранные файлы уже лежат в [`dist/`](dist/):
-`strassemods-neoforge-1.21.1.jar` (кидается в `mods/` и работает) и
-`strassemods-fabric-1.21.1-named.jar` (Mojang-имена, для dev-окружения).
+`magic_wand_strasse-neoforge-1.21.1.jar` (кидается в `mods/` и работает) и
+`magic_wand_strasse-fabric-1.21.1-named.jar` (Mojang-имена, для dev-окружения).
 
 Они собраны прямо в изолированной среде, без Gradle и maven: компилятор ECJ +
 набор API-заглушек с точными сигнатурами 1.21.1, упаковка — питоновским
