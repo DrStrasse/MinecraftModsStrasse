@@ -1,0 +1,4 @@
+# Файлы апстрим-MDK, которые не нужны моду «Волшебная палочка».
+# Удаляются после наложения оверлея (по одному пути на строку, от корня шаблона).
+src/main/java/by/strasse/strassemods/Config.java
+src/main/java/by/strasse/strassemods/StrasseModsClient.java

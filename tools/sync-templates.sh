@@ -81,12 +81,24 @@ apply_shared() {
 }
 
 # Накладывает tools/overlays/<template>/ поверх апстрим-шаблона (наш собственный код).
+# Файл .remove внутри оверлея — список ненужных апстрим-файлов, они удаляются после копирования.
 apply_overlay() {
   local name="$1"
   local ov="$ROOT/tools/overlays/$name"
   [ -d "$ov" ] || return 0
   log "  overlay: tools/overlays/$name"
   cp -r "$ov/." "$ROOT/templates/$name/"
+  rm -f "$ROOT/templates/$name/.remove"
+
+  if [ -f "$ov/.remove" ]; then
+    while IFS= read -r victim; do
+      case "$victim" in ''|'#'*) continue;; esac
+      if [ -e "$ROOT/templates/$name/$victim" ]; then
+        log "  remove: $victim"
+        rm -rf "${ROOT:?}/templates/$name/$victim"
+      fi
+    done < "$ov/.remove"
+  fi
 }
 
 clone_fabric() {
@@ -137,7 +149,7 @@ p = sys.argv[1]
 with open(p) as f:
     data = json.load(f, object_pairs_hook=collections.OrderedDict)
 data["name"] = "Strasse Mods"
-data["description"] = "Strasse Mods — базовый мод-шаблон для Fabric."
+data["description"] = "Волшебная палочка в стиле Гарри Поттера: Люмос, Нокс, Алохомора, Вингардиум Левиоса, Акцио, Депульсо, Инсендио."
 data["authors"] = ["DrStrasse"]
 data["contact"] = {"homepage": "https://github.com/DrStrasse/MinecraftModsStrasse",
                    "sources": "https://github.com/DrStrasse/MinecraftModsStrasse"}

@@ -124,10 +124,28 @@ git add .github/workflows && git commit -m "ci: сборка шаблонов и
 локально даёт `cd templates/fabric-1.21.1 && ./gradlew build` — jar появится
 в `build/libs/`.
 
-> Шаблоны собраны из официальных апстрим-проектов и версии сверены с maven, но в
-> изолированной среде, где готовился коммит, не было ни JDK, ни доступа к
-> maven-репозиториям, поэтому `./gradlew build` там не запускался. Первый прогон CI
-> (или локальный `./gradlew build`) — обязательный шаг приёмки.
+## Готовые jar без Gradle
+
+Если ждать CI не хочется, собранные файлы уже лежат в [`dist/`](dist/):
+`strassemods-neoforge-1.21.1.jar` (кидается в `mods/` и работает) и
+`strassemods-fabric-1.21.1-named.jar` (Mojang-имена, для dev-окружения).
+
+Они собраны прямо в изолированной среде, без Gradle и maven: компилятор ECJ +
+набор API-заглушек с точными сигнатурами 1.21.1, упаковка — питоновским
+`zipfile`. Устройство, воспроизведение и ограничения описаны в
+[`tools/offline-build/README.md`](tools/offline-build/README.md):
+
+```bash
+./tools/offline-build/fetch-toolchain.sh                       # JVM + ECJ
+python3 tools/offline-build/build.py --all --out dist          # сборка jar
+python3 tools/offline-build/verify.py dist/*.jar               # проверка байткода
+```
+
+> Шаблоны собраны из официальных апстрим-проектов и версии сверены с maven, но
+> `./gradlew build` в изолированной среде не запускался. Jar в `dist/` проверен
+> иначе: класс-файлы версии 65 загружаются и верифицируются JVM, а каждое обращение
+> к API Minecraft/NeoForge/Fabric выписано в `tools/offline-build/api-usage.txt`
+> и сверено с сигнатурами 1.21.1. Запуск игры остаётся шагом приёмки.
 
 ## Лицензия
 

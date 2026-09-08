@@ -1,9 +1,5 @@
 {
-  "itemGroup.strassemods": "Strasse Mods",
-  "block.strassemods.example_block": "Пример блока",
-  "item.strassemods.example_item": "Пример предмета",
   "item.strassemods.magic_wand": "Волшебная палочка",
-
   "spell.strassemods.lumos": "Люмос",
   "spell.strassemods.nox": "Нокс",
   "spell.strassemods.alohomora": "Алохомора",
@@ -11,13 +7,8 @@
   "spell.strassemods.accio": "Акцио",
   "spell.strassemods.depulso": "Депульсо",
   "spell.strassemods.incendio": "Инсендио",
-
   "tooltip.strassemods.magic_wand.spell": "Заклинание: %s",
   "tooltip.strassemods.magic_wand.hint": "ПКМ — применить, Shift + ПКМ — сменить",
   "message.strassemods.spell_selected": "Выбрано заклинание: %s",
-  "message.strassemods.spell_failed": "%s не сработало — нет подходящей цели",
-
-  "strassemods.configuration.title": "Настройки Strasse Mods",
-  "strassemods.configuration.logDirtBlock": "Логировать блок земли",
-  "strassemods.configuration.magicNumber": "Магическое число"
+  "message.strassemods.spell_failed": "%s не сработало — нет подходящей цели"
 }

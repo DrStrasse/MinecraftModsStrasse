@@ -3,7 +3,7 @@
 	"id": "strassemods",
 	"version": "${version}",
 	"name": "Strasse Mods",
-	"description": "Strasse Mods — базовый мод-шаблон для Fabric.",
+	"description": "Волшебная палочка в стиле Гарри Поттера: Люмос, Нокс, Алохомора, Вингардиум Левиоса, Акцио, Депульсо, Инсендио.",
 	"authors": [
 		"DrStrasse"
 	],

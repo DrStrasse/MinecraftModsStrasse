@@ -1,9 +1,5 @@
 {
-  "itemGroup.strassemods": "Strasse Mods",
-  "block.strassemods.example_block": "Example Block",
-  "item.strassemods.example_item": "Example Item",
   "item.strassemods.magic_wand": "Magic Wand",
-
   "spell.strassemods.lumos": "Lumos",
   "spell.strassemods.nox": "Nox",
   "spell.strassemods.alohomora": "Alohomora",
@@ -11,17 +7,8 @@
   "spell.strassemods.accio": "Accio",
   "spell.strassemods.depulso": "Depulso",
   "spell.strassemods.incendio": "Incendio",
-
   "tooltip.strassemods.magic_wand.spell": "Spell: %s",
   "tooltip.strassemods.magic_wand.hint": "Right-click to cast, Shift + right-click to switch",
   "message.strassemods.spell_selected": "Spell selected: %s",
-  "message.strassemods.spell_failed": "%s fizzles out — no valid target",
-
-  "strassemods.configuration.title": "Strasse Mods Config",
-  "strassemods.configuration.section.strassemods.common.toml": "Strasse Mods Config",
-  "strassemods.configuration.section.strassemods.common.toml.title": "Strasse Mods Config",
-  "strassemods.configuration.items": "Item List",
-  "strassemods.configuration.logDirtBlock": "Log Dirt Block",
-  "strassemods.configuration.magicNumberIntroduction": "Magic Number Text",
-  "strassemods.configuration.magicNumber": "Magic Number"
+  "message.strassemods.spell_failed": "%s fizzles out — no valid target"
 }
