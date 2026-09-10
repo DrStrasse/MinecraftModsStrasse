@@ -61,6 +61,17 @@ TEMPLATES = {
         "jar": "magic_wand_strasse-fabric-1.21.1-named.jar",
         "remap": "magic_wand_strasse-fabric-1.21.1.jar",
     },
+    "xray-fabric-1.21.1": {
+        "path": "mods/xray-fabric-1.21.1",
+        "source_dirs": ["src/client/java"],
+        "resource_dirs": ["src/main/resources", "src/client/resources"],
+        "exclude": [],
+        "metadata": "fabric",
+        "implementation_title": "xray_strasse",
+        "mapping_log": "tools/offline-build/xray-fabric-mappings.txt",
+        "jar": "xray_strasse-fabric-1.21.1-named.jar",
+        "remap": "xray_strasse-fabric-1.21.1.jar",
+    },
 }
 
 
@@ -196,7 +207,7 @@ def yarn_mappings() -> Path | None:
 
 def build_jar(template: str, out_dir: Path, java: str, ecj: str, stub_classes: Path) -> Path:
     config = TEMPLATES[template]
-    template_dir = ROOT / "templates" / template
+    template_dir = ROOT / config.get("path", f"templates/{template}")
     props = read_gradle_properties(template_dir)
     props.setdefault("mod_version", "1.0.0")
 
@@ -224,7 +235,7 @@ def build_jar(template: str, out_dir: Path, java: str, ecj: str, stub_classes: P
 
         manifest = (
             "Manifest-Version: 1.0\r\n"
-            "Implementation-Title: magic_wand_strasse\r\n"
+            f"Implementation-Title: {config.get('implementation_title', 'magic_wand_strasse')}\r\n"
             f"Specification-Title: {props.get('mod_name', 'Strasse Mods')}\r\n"
             f"Implementation-Version: {props['mod_version']}\r\n"
             f"Implementation-Vendor: {props.get('mod_authors', 'DrStrasse')}\r\n"
@@ -272,8 +283,8 @@ def build_jar(template: str, out_dir: Path, java: str, ecj: str, stub_classes: P
     import fabric_remap
 
     target = out_dir / config["remap"]
-    fabric_remap.remap_jar(mappings, jar_path, target,
-                           ROOT / "tools" / "offline-build" / "fabric-mappings.txt")
+    mapping_log = ROOT / config.get("mapping_log", "tools/offline-build/fabric-mappings.txt")
+    fabric_remap.remap_jar(mappings, jar_path, target, mapping_log)
     fabric_remap.remap_stub_classes(fabric_remap.Yarn(mappings), stub_classes,
                                     WORK / "stub-classes-inter")
     log(f"{template}: готов {target.relative_to(ROOT)} ({target.stat().st_size // 1024} КиБ)")
@@ -281,7 +292,7 @@ def build_jar(template: str, out_dir: Path, java: str, ecj: str, stub_classes: P
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Оффлайн-сборка jar мода «Волшебная палочка»")
+    parser = argparse.ArgumentParser(description="Оффлайн-сборка jar-модов Strasse")
     parser.add_argument("--template", action="append", choices=sorted(TEMPLATES),
                         help="какой шаблон собрать (можно несколько раз)")
     parser.add_argument("--all", action="store_true", help="собрать все поддерживаемые шаблоны")

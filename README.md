@@ -1,7 +1,7 @@
 # MinecraftModsStrasse
 
 Рабочий репозиторий по разработке модов **Minecraft Java Edition**: справочник по
-Java/Fabric/Forge/NeoForge и десять готовых к сборке шаблонов модов — от 1.20.1 до 26.2.
+Java/Fabric/Forge/NeoForge, десять готовых шаблонов и самостоятельные моды — от 1.20.1 до 26.2.
 
 Репозиторий не содержит ничего из GRM-проектов: это отдельная площадка только под Minecraft.
 
@@ -10,11 +10,12 @@ Java/Fabric/Forge/NeoForge и десять готовых к сборке шаб
 ## Что внутри
 
 ```
-docs/         справочник (10 разделов, на русском)
+docs/         справочник (12 разделов, на русском)
 data/         versions.json — машиночитаемая матрица версий
 templates/    10 шаблонов модов, каждый — самостоятельный Gradle-проект
-tools/        sync-templates.sh, check-versions.sh, overlays/
-.github/      CI: сборка всех шаблонов на нужных JDK
+mods/         самостоятельные моды, включая Strasse X-Ray для Fabric 1.21.1
+tools/        синхронизация шаблонов и оффлайн-сборка jar
+ci/           заготовки workflow для сборки на GitHub Actions
 ```
 
 ## Шаблоны
@@ -45,6 +46,17 @@ tools/        sync-templates.sh, check-versions.sh, overlays/
 прицела — даже за стеной — и переключает его. Логика заклинаний написана на чистом
 ванильном API и общая для обоих загрузчиков: [docs/11-magic-wand.md](docs/11-magic-wand.md).
 
+### Strasse X-Ray
+
+[`mods/xray-fabric-1.21.1`](mods/xray-fabric-1.21.1/) — отдельный клиентский мод для
+Fabric 1.21.1. Клавиша **X** включает цветные рамки вокруг руд в загруженных клиентом
+чанках; назначение меняется в штатном меню управления. Рамки видны сквозь рельеф,
+поиск ограничен радиусом 24×16 блоков и не меняет сами блоки.
+
+Мод предназначен для одиночной игры и серверов, где такая подсветка разрешена. Он
+не извлекает закрытые серверные данные: блоки, заменённые серверным anti-xray на камень,
+для клиента остаются камнем. Установка и список руд: [docs/12-xray.md](docs/12-xray.md).
+
 ## Быстрый старт
 
 ```bash
@@ -71,6 +83,7 @@ cd templates/neoforge-1.21.1   # или любой другой шаблон
 | 09 | [Ресурсы и datagen](docs/09-resources-datagen.md) |
 | 10 | [Публикация и CI](docs/10-publishing-ci.md) |
 | 11 | [Мод «Волшебная палочка»](docs/11-magic-wand.md) — рабочий мод: предмет-палочка с семью заклинаниями для Fabric и NeoForge |
+| 12 | [Strasse X-Ray](docs/12-xray.md) — клиентская подсветка уже полученных руд для Fabric 1.21.1 |
 
 ## Ключевые факты на сентябрь 2026
 
@@ -102,33 +115,39 @@ cd templates/neoforge-1.21.1   # или любой другой шаблон
 
 ### Проверка сборки в CI
 
-Готовых workflow два:
+Готовых workflow три:
 
 * [`ci/build-templates.yml`](ci/build-templates.yml) — матрица из 10 шаблонов, каждый
   собирается на своей JDK (17/21/25), плюс линт JSON и bash;
 * [`ci/build-magic-wand.yml`](ci/build-magic-wand.yml) — сборка мода «Волшебная палочка»
-  (Fabric и NeoForge 1.21.1) на JDK 21 с выкладкой готовых **jar в артефакты запуска**.
+  (Fabric и NeoForge 1.21.1) на JDK 21;
+* [`ci/build-xray.yml`](ci/build-xray.yml) — сборка Strasse X-Ray для Fabric 1.21.1
+  с выкладкой готового **jar в артефакты запуска**.
 
 Файл намеренно лежит **не** в `.github/workflows/` — интеграция, которой сделан этот
 коммит, не имеет права `workflows` и не может пушить файлы воркфлоу. Чтобы включить CI:
 
 ```bash
 mkdir -p .github/workflows
-cp ci/build-templates.yml ci/build-magic-wand.yml .github/workflows/
-git add .github/workflows && git commit -m "ci: сборка шаблонов и jar палочки" && git push
+cp ci/build-templates.yml ci/build-magic-wand.yml ci/build-xray.yml .github/workflows/
+git add .github/workflows && git commit -m "ci: сборка шаблонов и jar-модов" && git push
 ```
 
-После этого jar-файлы мода берутся так: вкладка **Actions** → запуск
-«Волшебная палочка — сборка jar» → раздел **Artifacts** →
-`magic-wand-fabric-1.21.1` и `magic-wand-neoforge-1.21.1`. Тот же результат
-локально даёт `cd templates/fabric-1.21.1 && ./gradlew build` — jar появится
-в `build/libs/`.
+После этого jar-файлы берутся во вкладке **Actions** → нужный запуск → **Artifacts**.
+Для палочки артефакты называются `magic-wand-fabric-1.21.1` и
+`magic-wand-neoforge-1.21.1`, для подсветки — `xray-strasse-fabric-1.21.1`.
+Локально используется `./gradlew build` в каталоге нужного шаблона или мода;
+jar появится в `build/libs/`.
 
 ## Готовые jar без Gradle
 
 Если ждать CI не хочется, собранные файлы уже лежат в [`dist/`](dist/):
-`magic_wand_strasse-neoforge-1.21.1.jar` и `magic_wand_strasse-fabric-1.21.1.jar` —
-оба кидаются в `mods/` и работают (Fabric-версии нужен ещё Fabric API).
+
+- `magic_wand_strasse-neoforge-1.21.1.jar`;
+- `magic_wand_strasse-fabric-1.21.1.jar`;
+- `xray_strasse-fabric-1.21.1.jar`.
+
+Все файлы кладутся в `mods/`; обеим Fabric-сборкам нужен Fabric API.
 
 Они собраны прямо в изолированной среде, без Gradle и maven: компилятор ECJ +
 набор API-заглушек с точными сигнатурами 1.21.1, упаковка — питоновским

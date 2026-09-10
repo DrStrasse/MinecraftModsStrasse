@@ -1,0 +1,6 @@
+{
+  "key.categories.strassexray": "Strasse X-Ray",
+  "key.strassexray.toggle": "Toggle ore highlighting",
+  "message.strassexray.enabled": "X-Ray enabled — ores found: %s",
+  "message.strassexray.disabled": "X-Ray disabled"
+}

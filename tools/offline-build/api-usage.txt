@@ -290,3 +290,55 @@
 поле   net/minecraft/world/phys/Vec3#y D
 поле   net/minecraft/world/phys/Vec3#z D
 
+### xray_strasse-fabric-1.21.1.jar
+классов: 3, версия байткода: [65]
+метод  com/mojang/blaze3d/systems/RenderSystem#defaultBlendFunc ()V
+метод  com/mojang/blaze3d/systems/RenderSystem#depthMask (Z)V
+метод  com/mojang/blaze3d/systems/RenderSystem#disableBlend ()V
+метод  com/mojang/blaze3d/systems/RenderSystem#disableDepthTest ()V
+метод  com/mojang/blaze3d/systems/RenderSystem#enableBlend ()V
+метод  com/mojang/blaze3d/systems/RenderSystem#enableDepthTest ()V
+метод  com/mojang/blaze3d/systems/RenderSystem#lineWidth (F)V
+метод  com/mojang/blaze3d/systems/RenderSystem#setShader (Ljava/util/function/Supplier;)V
+метод  net/fabricmc/fabric/api/client/keybinding/v1/KeyBindingHelper#registerKeyBinding (Lnet/minecraft/class_304;)Lnet/minecraft/class_304;
+метод  net/fabricmc/fabric/api/event/Event#register (Ljava/lang/Object;)V
+метод  net/minecraft/class_2338#method_10062 ()Lnet/minecraft/class_2338;
+метод  net/minecraft/class_2338#method_10097 (Lnet/minecraft/class_2338;Lnet/minecraft/class_2338;)Ljava/lang/Iterable;
+метод  net/minecraft/class_2338#method_10260 ()I
+метод  net/minecraft/class_2338#method_10263 ()I
+метод  net/minecraft/class_2338#method_10264 ()I
+метод  net/minecraft/class_2338#method_34592 (III)Lnet/minecraft/class_2338;
+метод  net/minecraft/class_2680#method_26204 ()Lnet/minecraft/class_2248;
+метод  net/minecraft/class_286#method_43433 (Lnet/minecraft/class_9801;)V
+метод  net/minecraft/class_287#method_60804 ()Lnet/minecraft/class_9801;
+метод  net/minecraft/class_289#method_1348 ()Lnet/minecraft/class_289;
+метод  net/minecraft/class_289#method_60827 (Lnet/minecraft/class_293$class_5596;Lnet/minecraft/class_293;)Lnet/minecraft/class_287;
+метод  net/minecraft/class_293$class_5596#valueOf (Ljava/lang/String;)Lnet/minecraft/class_293$class_5596;
+метод  net/minecraft/class_2960#method_12832 ()Ljava/lang/String;
+метод  net/minecraft/class_304#<init> (Ljava/lang/String;ILjava/lang/String;)V
+метод  net/minecraft/class_304#method_1436 ()Z
+метод  net/minecraft/class_4184#method_19326 ()Lnet/minecraft/class_243;
+метод  net/minecraft/class_4587#method_22903 ()V
+метод  net/minecraft/class_4587#method_22904 (DDD)V
+метод  net/minecraft/class_4587#method_22909 ()V
+метод  net/minecraft/class_5321#method_29177 ()Lnet/minecraft/class_2960;
+метод  net/minecraft/class_638#method_8320 (Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;
+метод  net/minecraft/class_746#method_24515 ()Lnet/minecraft/class_2338;
+метод  net/minecraft/class_746#method_7353 (Lnet/minecraft/class_2561;Z)V
+метод  net/minecraft/class_757#method_34535 ()Lnet/minecraft/class_5944;
+метод  net/minecraft/class_761#method_22980 (Lnet/minecraft/class_4587;Lnet/minecraft/class_4588;DDDDDDFFFF)V
+метод* net/fabricmc/fabric/api/client/rendering/v1/WorldRenderContext#camera ()Lnet/minecraft/class_4184;
+метод* net/fabricmc/fabric/api/client/rendering/v1/WorldRenderContext#matrixStack ()Lnet/minecraft/class_4587;
+метод* net/minecraft/class_2378#method_10221 (Ljava/lang/Object;)Lnet/minecraft/class_2960;
+метод* net/minecraft/class_2378#method_30517 ()Lnet/minecraft/class_5321;
+метод* net/minecraft/class_2561#method_43469 (Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/class_5250;
+метод* net/minecraft/class_2561#method_43471 (Ljava/lang/String;)Lnet/minecraft/class_5250;
+поле   net/fabricmc/fabric/api/client/event/lifecycle/v1/ClientTickEvents#END_CLIENT_TICK Lnet/fabricmc/fabric/api/event/Event;
+поле   net/fabricmc/fabric/api/client/rendering/v1/WorldRenderEvents#LAST Lnet/fabricmc/fabric/api/event/Event;
+поле   net/minecraft/class_243#field_1350 D
+поле   net/minecraft/class_243#field_1351 D
+поле   net/minecraft/class_243#field_1352 D
+поле   net/minecraft/class_290#field_29337 Lnet/minecraft/class_293;
+поле   net/minecraft/class_310#field_1687 Lnet/minecraft/class_638;
+поле   net/minecraft/class_310#field_1724 Lnet/minecraft/class_746;
+

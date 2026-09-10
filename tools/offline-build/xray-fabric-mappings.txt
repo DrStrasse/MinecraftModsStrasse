@@ -1,0 +1,72 @@
+# Соответствие имён mojmap -> intermediary (Fabric 1.21.1)
+# Сгенерировано tools/offline-build/fabric_remap.py
+
+com/mojang/blaze3d/vertex/BufferBuilder#buildOrThrow ()Lcom/mojang/blaze3d/vertex/MeshData;
+    -> net/minecraft/class_287#method_60804 ()Lnet/minecraft/class_9801;
+com/mojang/blaze3d/vertex/BufferUploader#drawWithShader (Lcom/mojang/blaze3d/vertex/MeshData;)V
+    -> net/minecraft/class_286#method_43433 (Lnet/minecraft/class_9801;)V
+com/mojang/blaze3d/vertex/DefaultVertexFormat#POSITION_COLOR_NORMAL Lcom/mojang/blaze3d/vertex/VertexFormat;
+    -> net/minecraft/class_290#field_29337 Lnet/minecraft/class_293;
+com/mojang/blaze3d/vertex/PoseStack#popPose ()V
+    -> net/minecraft/class_4587#method_22909 ()V
+com/mojang/blaze3d/vertex/PoseStack#pushPose ()V
+    -> net/minecraft/class_4587#method_22903 ()V
+com/mojang/blaze3d/vertex/PoseStack#translate (DDD)V
+    -> net/minecraft/class_4587#method_22904 (DDD)V
+com/mojang/blaze3d/vertex/Tesselator#begin (Lcom/mojang/blaze3d/vertex/VertexFormat$Mode;Lcom/mojang/blaze3d/vertex/VertexFormat;)Lcom/mojang/blaze3d/vertex/BufferBuilder;
+    -> net/minecraft/class_289#method_60827 (Lnet/minecraft/class_293$class_5596;Lnet/minecraft/class_293;)Lnet/minecraft/class_287;
+com/mojang/blaze3d/vertex/Tesselator#getInstance ()Lcom/mojang/blaze3d/vertex/Tesselator;
+    -> net/minecraft/class_289#method_1348 ()Lnet/minecraft/class_289;
+net/minecraft/client/Camera#getPosition ()Lnet/minecraft/world/phys/Vec3;
+    -> net/minecraft/class_4184#method_19326 ()Lnet/minecraft/class_243;
+net/minecraft/client/KeyMapping#consumeClick ()Z
+    -> net/minecraft/class_304#method_1436 ()Z
+net/minecraft/client/Minecraft#level Lnet/minecraft/client/multiplayer/ClientLevel;
+    -> net/minecraft/class_310#field_1687 Lnet/minecraft/class_638;
+net/minecraft/client/Minecraft#player Lnet/minecraft/client/player/LocalPlayer;
+    -> net/minecraft/class_310#field_1724 Lnet/minecraft/class_746;
+net/minecraft/client/multiplayer/ClientLevel#getBlockState (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    -> net/minecraft/class_638#method_8320 (Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680; (объявлен в net/minecraft/class_1922)
+net/minecraft/client/player/LocalPlayer#blockPosition ()Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_746#method_24515 ()Lnet/minecraft/class_2338; (объявлен в net/minecraft/class_5568)
+net/minecraft/client/player/LocalPlayer#displayClientMessage (Lnet/minecraft/network/chat/Component;Z)V
+    -> net/minecraft/class_746#method_7353 (Lnet/minecraft/class_2561;Z)V (объявлен в net/minecraft/class_1657)
+net/minecraft/client/renderer/GameRenderer#getRendertypeLinesShader ()Lnet/minecraft/client/renderer/ShaderInstance;
+    -> net/minecraft/class_757#method_34535 ()Lnet/minecraft/class_5944;
+net/minecraft/client/renderer/LevelRenderer#renderLineBox (Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;DDDDDDFFFF)V
+    -> net/minecraft/class_761#method_22980 (Lnet/minecraft/class_4587;Lnet/minecraft/class_4588;DDDDDDFFFF)V
+net/minecraft/core/BlockPos#betweenClosed (Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+    -> net/minecraft/class_2338#method_10097 (Lnet/minecraft/class_2338;Lnet/minecraft/class_2338;)Ljava/lang/Iterable;
+net/minecraft/core/BlockPos#getX ()I
+    -> net/minecraft/class_2338#method_10263 ()I (объявлен в net/minecraft/class_2382)
+net/minecraft/core/BlockPos#getY ()I
+    -> net/minecraft/class_2338#method_10264 ()I (объявлен в net/minecraft/class_2382)
+net/minecraft/core/BlockPos#getZ ()I
+    -> net/minecraft/class_2338#method_10260 ()I (объявлен в net/minecraft/class_2382)
+net/minecraft/core/BlockPos#immutable ()Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_2338#method_10062 ()Lnet/minecraft/class_2338;
+net/minecraft/core/BlockPos#offset (III)Lnet/minecraft/core/BlockPos;
+    -> net/minecraft/class_2338#method_34592 (III)Lnet/minecraft/class_2338; (объявлен в net/minecraft/class_2382)
+net/minecraft/core/Registry#getKey (Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+    -> net/minecraft/class_2378#method_10221 (Ljava/lang/Object;)Lnet/minecraft/class_2960;
+net/minecraft/core/Registry#key ()Lnet/minecraft/resources/ResourceKey;
+    -> net/minecraft/class_2378#method_30517 ()Lnet/minecraft/class_5321;
+net/minecraft/network/chat/Component#translatable (Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+    -> net/minecraft/class_2561#method_43471 (Ljava/lang/String;)Lnet/minecraft/class_5250;
+net/minecraft/network/chat/Component#translatable (Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+    -> net/minecraft/class_2561#method_43469 (Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/class_5250;
+net/minecraft/resources/ResourceKey#location ()Lnet/minecraft/resources/ResourceLocation;
+    -> net/minecraft/class_5321#method_29177 ()Lnet/minecraft/class_2960;
+net/minecraft/resources/ResourceLocation#getPath ()Ljava/lang/String;
+    -> net/minecraft/class_2960#method_12832 ()Ljava/lang/String;
+net/minecraft/world/level/block/state/BlockState#getBlock ()Lnet/minecraft/world/level/block/Block;
+    -> net/minecraft/class_2680#method_26204 ()Lnet/minecraft/class_2248; (объявлен в net/minecraft/class_4970$class_4971)
+net/minecraft/world/phys/Vec3#x D
+    -> net/minecraft/class_243#field_1352 D
+net/minecraft/world/phys/Vec3#y D
+    -> net/minecraft/class_243#field_1351 D
+net/minecraft/world/phys/Vec3#z D
+    -> net/minecraft/class_243#field_1350 D
+
+# Константы, перенаправленные на класс-мост
+

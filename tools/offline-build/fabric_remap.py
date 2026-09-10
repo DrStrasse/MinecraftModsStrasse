@@ -41,7 +41,24 @@ from pathlib import Path
 # mojmap -> yarn: классы
 # ---------------------------------------------------------------------------
 CLASS_MAP = {
+    "com/mojang/blaze3d/vertex/BufferBuilder": "net/minecraft/client/render/BufferBuilder",
+    "com/mojang/blaze3d/vertex/BufferUploader": "net/minecraft/client/render/BufferRenderer",
+    "com/mojang/blaze3d/vertex/DefaultVertexFormat": "net/minecraft/client/render/VertexFormats",
+    "com/mojang/blaze3d/vertex/MeshData": "net/minecraft/client/render/BuiltBuffer",
+    "com/mojang/blaze3d/vertex/PoseStack": "net/minecraft/client/util/math/MatrixStack",
+    "com/mojang/blaze3d/vertex/Tesselator": "net/minecraft/client/render/Tessellator",
+    "com/mojang/blaze3d/vertex/VertexConsumer": "net/minecraft/client/render/VertexConsumer",
+    "com/mojang/blaze3d/vertex/VertexFormat": "net/minecraft/client/render/VertexFormat",
+    "com/mojang/blaze3d/vertex/VertexFormat$Mode": "net/minecraft/client/render/VertexFormat$DrawMode",
     "net/minecraft/ChatFormatting": "net/minecraft/util/Formatting",
+    "net/minecraft/client/Camera": "net/minecraft/client/render/Camera",
+    "net/minecraft/client/KeyMapping": "net/minecraft/client/option/KeyBinding",
+    "net/minecraft/client/Minecraft": "net/minecraft/client/MinecraftClient",
+    "net/minecraft/client/multiplayer/ClientLevel": "net/minecraft/client/world/ClientWorld",
+    "net/minecraft/client/player/LocalPlayer": "net/minecraft/client/network/ClientPlayerEntity",
+    "net/minecraft/client/renderer/GameRenderer": "net/minecraft/client/render/GameRenderer",
+    "net/minecraft/client/renderer/LevelRenderer": "net/minecraft/client/render/WorldRenderer",
+    "net/minecraft/client/renderer/ShaderInstance": "net/minecraft/client/gl/ShaderProgram",
     "net/minecraft/core/BlockPos": "net/minecraft/util/math/BlockPos",
     "net/minecraft/core/Direction": "net/minecraft/util/math/Direction",
     "net/minecraft/core/Holder": "net/minecraft/registry/entry/RegistryEntry",
@@ -121,6 +138,22 @@ CLASS_MAP = {
 # mojmap -> yarn: методы и поля, ключ (mojmap-класс, mojmap-имя)
 # ---------------------------------------------------------------------------
 MEMBER_MAP = {
+    # --- клиент, клавиши и отрисовка ---
+    ("net/minecraft/client/KeyMapping", "consumeClick"): "wasPressed",
+    ("net/minecraft/client/Minecraft", "getInstance"): "getInstance",
+    ("net/minecraft/client/Minecraft", "level"): "world",
+    ("net/minecraft/client/Minecraft", "player"): "player",
+    ("net/minecraft/client/Camera", "getPosition"): "getPos",
+    ("com/mojang/blaze3d/vertex/PoseStack", "pushPose"): "push",
+    ("com/mojang/blaze3d/vertex/PoseStack", "popPose"): "pop",
+    ("com/mojang/blaze3d/vertex/PoseStack", "translate"): "translate",
+    ("com/mojang/blaze3d/vertex/Tesselator", "getInstance"): "getInstance",
+    ("com/mojang/blaze3d/vertex/Tesselator", "begin"): "begin",
+    ("com/mojang/blaze3d/vertex/BufferBuilder", "buildOrThrow"): "build",
+    ("com/mojang/blaze3d/vertex/BufferUploader", "drawWithShader"): "drawWithGlobalProgram",
+    ("com/mojang/blaze3d/vertex/DefaultVertexFormat", "POSITION_COLOR_NORMAL"): "LINES",
+    ("net/minecraft/client/renderer/GameRenderer", "getRendertypeLinesShader"): "getRenderTypeLinesProgram",
+    ("net/minecraft/client/renderer/LevelRenderer", "renderLineBox"): "drawBox",
     # --- мир ---
     ("net/minecraft/world/level/Level", "getBlockState"): ("getBlockState", "net/minecraft/world/BlockView"),
     ("net/minecraft/world/level/Level", "isEmptyBlock"): ("isAir", "net/minecraft/world/WorldView"),
@@ -190,6 +223,9 @@ MEMBER_MAP = {
     ("net/minecraft/world/level/block/state/BlockState", "hasProperty"): "contains",
     ("net/minecraft/world/level/block/state/BlockState", "canBeReplaced"): "isReplaceable",
     # --- математика ---
+    ("net/minecraft/core/Vec3i", "getX"): ("getX", "net/minecraft/util/math/Vec3i"),
+    ("net/minecraft/core/Vec3i", "getY"): ("getY", "net/minecraft/util/math/Vec3i"),
+    ("net/minecraft/core/Vec3i", "getZ"): ("getZ", "net/minecraft/util/math/Vec3i"),
     ("net/minecraft/core/BlockPos", "offset"): "add",
     ("net/minecraft/core/BlockPos", "relative"): "offset",
     ("net/minecraft/core/BlockPos", "immutable"): "toImmutable",
@@ -220,11 +256,13 @@ MEMBER_MAP = {
     ("net/minecraft/world/InteractionResultHolder", "pass"): "pass",
     ("net/minecraft/core/Registry", "register"): "register",
     ("net/minecraft/core/Registry", "get"): "get",
+    ("net/minecraft/core/Registry", "getKey"): "getId",
     ("net/minecraft/core/Registry", "key"): "getKey",
     ("net/minecraft/core/Registry", "wrapAsHolder"): "getEntry",
     ("net/minecraft/resources/ResourceKey", "location"): "getValue",
     ("net/minecraft/resources/ResourceLocation", "parse"): "of",
     ("net/minecraft/resources/ResourceLocation", "fromNamespaceAndPath"): "of",
+    ("net/minecraft/resources/ResourceLocation", "getPath"): "getPath",
     ("net/minecraft/core/component/DataComponentType", "builder"): "builder",
     ("net/minecraft/core/component/DataComponentType$Builder", "persistent"): "codec",
     ("net/minecraft/core/component/DataComponentType$Builder", "networkSynchronized"): "packetCodec",
@@ -271,6 +309,10 @@ SAME_NAME_OWNERS = (
 
 # Наследование: если член не описан у самого класса, ищем у предков.
 HIERARCHY = {
+    "net/minecraft/client/multiplayer/ClientLevel": ["net/minecraft/world/level/Level"],
+    "net/minecraft/client/player/LocalPlayer": ["net/minecraft/world/entity/player/Player",
+                                                  "net/minecraft/world/entity/LivingEntity",
+                                                  "net/minecraft/world/entity/Entity"],
     "net/minecraft/server/level/ServerLevel": ["net/minecraft/world/level/Level"],
     "net/minecraft/world/entity/LivingEntity": ["net/minecraft/world/entity/Entity"],
     "net/minecraft/world/entity/player/Player": ["net/minecraft/world/entity/LivingEntity",
@@ -419,18 +461,19 @@ class Remapper:
             return self.class_cache[name]
 
         result = name
+        yarn_name = CLASS_MAP.get(name)
 
-        if name.startswith("net/minecraft/"):
-            yarn_name = CLASS_MAP.get(name)
-
-            if yarn_name is None:
-                self.errors.append(f"нет соответствия для класса {name}")
+        # Большинство Minecraft-классов начинается с net/minecraft, однако часть
+        # клиентского рендера в Mojmap живёт в com/mojang/blaze3d/vertex и тоже
+        # переезжает в intermediary-классы net/minecraft/class_*.
+        if yarn_name is not None:
+            inter = self.yarn.intermediary_class(yarn_name)
+            if inter is None:
+                self.errors.append(f"в маппингах yarn нет класса {yarn_name} (для {name})")
             else:
-                inter = self.yarn.intermediary_class(yarn_name)
-                if inter is None:
-                    self.errors.append(f"в маппингах yarn нет класса {yarn_name} (для {name})")
-                else:
-                    result = inter
+                result = inter
+        elif name.startswith("net/minecraft/"):
+            self.errors.append(f"нет соответствия для класса {name}")
 
         self.class_cache[name] = result
         return result
@@ -441,7 +484,7 @@ class Remapper:
                       descriptor)
 
     def map_member(self, owner: str, name: str, descriptor: str) -> str:
-        if not owner.startswith("net/minecraft/") or name in SYNTHETIC:
+        if (not owner.startswith("net/minecraft/") and owner not in CLASS_MAP) or name in SYNTHETIC:
             return name
 
         entry = MEMBER_MAP.get((owner, name))

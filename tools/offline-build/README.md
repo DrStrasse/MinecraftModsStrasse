@@ -11,8 +11,8 @@ JVM связывает вызовы **по имени класса и дескр
 библиотеки. Значит, чтобы получить корректный байткод, компилятору достаточно
 знать *объявления* API Minecraft и загрузчика — тела методов не нужны.
 
-Поэтому в `stubs/` лежит набор заглушек: ~90 файлов, описывающих ровно те
-классы, поля и методы 1.21.1, к которым обращается мод, с точными сигнатурами.
+Поэтому в `stubs/` лежит набор из более чем 100 заглушек, описывающих ровно те
+классы, поля и методы 1.21.1, к которым обращаются моды, с точными сигнатурами.
 Мод компилируется против них, а в jar попадают только классы мода — заглушки
 отбрасываются. В игре их место занимают настоящие классы Minecraft.
 
@@ -67,8 +67,11 @@ Fabric в продакшене знает классы Minecraft под intermed
 # 1. поставить JVM, компилятор и маппинги (в /tmp/strassemods-offline)
 ./tools/offline-build/fetch-toolchain.sh
 
-# 2. собрать jar'ы в dist/
+# 2. собрать три jar в dist/: палочка Fabric/NeoForge и X-Ray Fabric
 python3 tools/offline-build/build.py --all --out dist
+
+# Можно собрать только X-Ray
+python3 tools/offline-build/build.py --template xray-fabric-1.21.1 --out dist
 
 # 3. проверить результат
 python3 tools/offline-build/verify.py --report tools/offline-build/api-usage.txt dist/*.jar
@@ -80,9 +83,10 @@ python3 tools/offline-build/verify.py --report tools/offline-build/api-usage.txt
 ## Что проверяется
 
 `verify.py` разбирает пул констант каждого класса и выписывает все обращения к
-Minecraft, NeoForge, Fabric и slf4j — с дескрипторами. Отчёт лежит в
-[`api-usage.txt`](api-usage.txt); именно его нужно сверять с исходниками 1.21.1,
-если что-то не заработает. Затем он просит JVM загрузить и верифицировать каждый
+Minecraft, NeoForge, Fabric и slf4j — с дескрипторами. Общий отчёт лежит в
+[`api-usage.txt`](api-usage.txt), а отдельный отчёт X-Ray — в
+[`xray-api-usage.txt`](xray-api-usage.txt); именно их нужно сверять с исходниками
+1.21.1, если что-то не заработает. Затем он просит JVM загрузить и верифицировать каждый
 класс: это ловит битый байткод и структурные ошибки.
 
 ## Ограничения

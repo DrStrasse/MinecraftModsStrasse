@@ -1,0 +1,6 @@
+{
+  "key.categories.strassexray": "Strasse X-Ray",
+  "key.strassexray.toggle": "Включить/выключить подсветку руд",
+  "message.strassexray.enabled": "X-Ray включён — найдено руд: %s",
+  "message.strassexray.disabled": "X-Ray выключен"
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "strassexray",
+  "version": "${version}",
+  "name": "Strasse X-Ray",
+  "description": "Настраиваемая подсветка руд, уже полученных клиентом. Для одиночной игры и серверов, где X-Ray разрешён.",
+  "authors": [
+    "DrStrasse"
+  ],
+  "contact": {
+    "homepage": "https://github.com/DrStrasse/MinecraftModsStrasse",
+    "sources": "https://github.com/DrStrasse/MinecraftModsStrasse"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "by.strasse.strassexray.client.StrasseXrayClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

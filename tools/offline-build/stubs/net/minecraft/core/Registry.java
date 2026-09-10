@@ -4,6 +4,7 @@ import net.minecraft.resources.ResourceLocation;
 public interface Registry<T> {
     static <V, T extends V> T register(Registry<V> registry, ResourceLocation name, T value) { return value; }
     T get(ResourceLocation name);
+    ResourceLocation getKey(T value);
     ResourceKey<? extends Registry<T>> key();
     Holder<T> wrapAsHolder(T value);
 }
